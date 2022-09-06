@@ -502,8 +502,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -705.0,
-            "y": 251.0,
+            "x": -717.9999389648438,
+            "y": 203.0,
             "width": 208.0,
             "height": 361.0
         }
@@ -524,7 +524,7 @@
     },
     "m_Material": {
         "type": 0,
-        "range": 1.0,
+        "range": 0.009999999776482582,
         "indexOfRefraction": 1.0
     }
 }
@@ -574,10 +574,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -779.0,
-            "y": 58.00000762939453,
+            "x": -717.9999389648438,
+            "y": 49.0,
             "width": 208.0,
-            "height": 127.00000762939453
+            "height": 127.0
         }
     },
     "m_Slots": [
