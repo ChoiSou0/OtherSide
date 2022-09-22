@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float Speed;
+    [SerializeField] private float Speed;
+    [SerializeField] public GameObject player_Camera;
 
-    Rigidbody rb;
+    public bool isActive;
+    private Rigidbody rb;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -16,7 +19,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Vector3 Pos = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        rb.velocity = new Vector3(-Pos.x * Speed, rb.velocity.y, -Pos.z * Speed);
+        if (isActive)
+        {
+            rb.velocity = new Vector3(-Pos.x * Speed, rb.velocity.y, -Pos.z * Speed);
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)

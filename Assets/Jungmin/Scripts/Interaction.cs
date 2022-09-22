@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour, IRotatable
 {
+    [SerializeField] private GameObject interactionObject;
     [HideInInspector] public bool isActive = false;
     Vector3 smoothrotReference;
 
@@ -11,12 +12,11 @@ public class Interaction : MonoBehaviour, IRotatable
     {
         get
         { 
-            return GetComponent<Transform>().eulerAngles;
+            return interactionObject.GetComponent<Transform>().eulerAngles;
         }
-
         set
         {
-            GetComponent<Transform>().eulerAngles = value;
+            interactionObject.GetComponent<Transform>().eulerAngles = value;
         }
     }
     
