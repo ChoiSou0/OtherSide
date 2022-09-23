@@ -33,14 +33,26 @@ public class PlayerController : MonoBehaviour
         {
             checkObj.isActive = true;
         }
+
+        var checkObj2 = other.GetComponent<Interact2>();
+        if (checkObj2 != null)
+        {
+            checkObj2.isActive = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        var checkObj = other.GetComponent<Interaction>();
-        if (checkObj != null)
+        var checkObj1 = other.GetComponent<Interaction>();
+        if (checkObj1 != null)
         {
-            checkObj.isActive = false;
+            checkObj1.isActive = false;
+        }
+
+        var checkObj2 = other.GetComponent<Interact2>();
+        if (checkObj2 != null)
+        {
+            checkObj2.isActive = false;
         }
     }
 }
