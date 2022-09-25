@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float Speed;
     [SerializeField] public GameObject player_Camera;
+    [SerializeField] private GameObject model;
 
     public bool isActive;
     private Rigidbody rb;
@@ -16,14 +17,16 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 Pos = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         if (isActive)
         {
             rb.velocity = new Vector3(-Pos.x * Speed, rb.velocity.y, -Pos.z * Speed);
-        }
 
+            if (Pos == Vector3.zero) return;
+            model.transform.forward = Pos;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController player_1;
     [SerializeField] private PlayerController player_2;
+    [SerializeField] private
     void Start()
     {
         
