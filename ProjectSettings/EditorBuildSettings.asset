@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Jungmin/Scene/Title.unity
+    guid: 3ffae4b740b2a6c498ab64fe7e94be24
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Stage_1.unity
+    guid: 918548645f47528408ff631680cc222d
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Stage_2.unity
+    guid: 8158cbafd10b5a84880ecfa5c31f2e16
   m_configObjects: {}
