@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-3771098050169629052
+--- !u!114 &-5552154451398356295
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ice_Mtrl
-  m_Shader: {fileID: -6465566751694194690, guid: c890da6734911414cb67be0dbeb6a5a1,
+  m_Name: Ground_Mtrl
+  m_Shader: {fileID: -6465566751694194690, guid: 014c6022ab4268f44a192b2a3bb4db3d,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -58,20 +58,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _IceTexture:
-        m_Texture: {fileID: 2800000, guid: e06685a23010627438a47f33d8fdd88e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+    - _MainTexuture:
+        m_Texture: {fileID: 2800000, guid: 4558f1cf14872674890cbb54f127e532, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _NormalFromTexture_492e9672b5b4418d9cbfcc01a8c10209_Texture_0:
-        m_Texture: {fileID: 2800000, guid: 9a795d142ae6fce4299cac0222b68901, type: 3}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -82,8 +78,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_42193bdc8bff4cd0855745e3f20b9dfe_Texture_1:
-        m_Texture: {fileID: 2800000, guid: 9a795d142ae6fce4299cac0222b68901, type: 3}
+    - _SampleTexture2D_9e6d0f46772c421ca4e2d0ee71d6fd3b_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 9bf2664daabbee04e9e0b95b9b700102, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_eb38cd85ad944b6d8c03b001e3cf230b_Texture_1:
+        m_Texture: {fileID: 2800000, guid: fe848dbc4d9bd7e49b25366c575256c7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -105,10 +105,9 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
-    - _BUILTIN_QueueControl: 0
-    - _BUILTIN_QueueOffset: 0
     - _Blend: 0
     - _BumpScale: 1
+    - _ChanalPower: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -117,18 +116,16 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FresnelPower: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Metallic: 0.4
-    - _Normals: 1
+    - _Metallic: 0
+    - _NormalPower: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _ReflectionAmount: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -138,22 +135,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.9465274, g: 1.1486983, b: 1.0968074, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0.671128, g: 0.6974438, b: 1.1382331, a: 0}
-    - _IceTiling: {r: 3, g: 3, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &5145041271772751598
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 0
