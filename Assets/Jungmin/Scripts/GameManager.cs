@@ -1,27 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance { get; set; }
+    public System.Action GameOver;
+
     [SerializeField] private PlayerController player_1;
     [SerializeField] private PlayerController player_2;
-    [SerializeField] private
-    void Start()
+
+    private void Awake()
     {
-        
+        instance = this;
+        GameOver += ReStart;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             SwapPlayer();
         }
     }
 
-    void SwapPlayer()
+    public void ReStart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void SwapPlayer()
     {
         var swap = (player_1.isActive) ? false : true;
 
