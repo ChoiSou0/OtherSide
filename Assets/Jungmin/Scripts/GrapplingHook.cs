@@ -13,11 +13,6 @@ public class GrapplingHook : MonoBehaviour
     private SpringJoint joint = null;
     private Vector3 ringPosition;
     private bool isGrappling = false;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -53,26 +48,27 @@ public class GrapplingHook : MonoBehaviour
             joint.minDistance = distance * 0.25f;
             joint.maxDistance = distance * 0.8f;
 
-            joint.spring = 4.5f;
-            joint.damper = 7f;
-            joint.massScale = 4.5f;
+            joint.spring = 5.5f;
+            joint.damper = 9f;
+            joint.massScale = 5.5f;
         }
     }
 
     private void StartHook()
-    {
-        transform.position = player.transform.position;
-        Hook.gameObject.SetActive(true);
-        rope.gameObject.SetActive(true);
-        isGrappling = true;
-
+    {  
+        transform.position = player.transform.position; 
         Collider[] rings = 
             Physics.OverlapSphere(transform.position, grapplingDistance, LayerMask.GetMask("Ring"));
 
-        if(rings != null)
+        if(rings.Length != 0)
         {
             GameObject ring = GetNearestRing(rings);
             ringPosition = ring.transform.GetChild(0).transform.position;
+
+            isGrappling = true;
+            Hook.gameObject.SetActive(true);
+            rope.gameObject.SetActive(true);
+            Hook.position = player.transform.position;
         }
     }
 
@@ -82,7 +78,6 @@ public class GrapplingHook : MonoBehaviour
         Destroy(joint);
         Hook.gameObject.SetActive(false);
         rope.gameObject.SetActive(false);
-        transform.position = player.transform.position;
     }
 
     GameObject GetNearestRing(Collider[] ring)
@@ -92,7 +87,7 @@ public class GrapplingHook : MonoBehaviour
 
         foreach(Collider col in ring)
         {
-            float dis = Vector3.Distance(transform.position, col.gameObject.transform.position);
+            float dis = Vector3.Distance(player.transform.position, col.gameObject.transform.position);
             if (minDistance <= dis)
             {
                 minDistance = dis;
@@ -104,14 +99,13 @@ public class GrapplingHook : MonoBehaviour
 
     private void DrawRope() 
     {
-        rope.positionCount = 2;
-        rope.SetPosition(0, player.gameObject.transform.position);
+        rope.SetPosition(0, new Vector3(player.transform.position.x, player.transform.position.y + 1, player.transform.position.z));
         rope.SetPosition(1, Hook.position);
     }
 
     private void OnDrawGizmos()
     {
-        Color color = Color.red;
+        Color color = Color.white;
         color.a = 0.5f;
         Gizmos.color = color;
         Gizmos.DrawSphere(transform.position, grapplingDistance);
