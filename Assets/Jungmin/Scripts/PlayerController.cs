@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isLocalMove;
     public bool isActive;
     private Rigidbody rb;
+    private SpringJoint joint;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        joint = GetComponent<SpringJoint>();
     }
 
     private void Move(Vector3 Pos)
