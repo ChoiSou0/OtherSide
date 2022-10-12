@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Jungmin/Scene/Title.unity
     guid: 3ffae4b740b2a6c498ab64fe7e94be24
@@ -17,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jungmin/Scene/Stage_2.unity
     guid: 8158cbafd10b5a84880ecfa5c31f2e16
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Stage_4.unity
+    guid: 5a31448df1d79aa429b4a050238bf54b
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Stage_6.unity
+    guid: 09f537d5591338d4d9f50b5936a0e6bb
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Stage_7.unity
+    guid: be17d289b7a69864fb0c40d1c92ce03c
   m_configObjects: {}

@@ -6,12 +6,17 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float Speed;
     [SerializeField] private float JumpForce;
+    [SerializeField] private float groundCheckDis;
+
     [SerializeField] public GameObject player_Camera;
     [SerializeField] private GameObject model;
 
     [HideInInspector] public bool isDie;
     [SerializeField] private bool isLocalMove;
     public bool isActive;
+    private bool isGrounded;
+
+    private float gravityVelocity;
     private Rigidbody rb;
     private SpringJoint joint;
 
@@ -26,17 +31,23 @@ public class PlayerController : MonoBehaviour
         Vector3 movePos;
         if (isLocalMove)
         {
-            movePos = ((transform.forward * Pos.x) * Speed) + (-(transform.right * Pos.z) * Speed);
-            rb.velocity = new Vector3(movePos.x, rb.velocity.y, movePos.z);
+            var v1 = ((transform.forward * Pos.x) * Speed) + (-(transform.right * Pos.z) * Speed);
+            movePos = new Vector3(v1.x, rb.velocity.y, v1.z);
         }
         else
         {
             movePos = new Vector3(-Pos.x * Speed, rb.velocity.y, -Pos.z * Speed);
-            rb.velocity = movePos;
         }
 
+        //중력 가속도
+        gravityVelocity = Time.deltaTime * Physics.gravity.y;
+        if (isGrounded) gravityVelocity = 0f;
+
+        rb.velocity = movePos + Vector3.up * gravityVelocity;
+        
+        //캐릭터 방향
         if (Pos == Vector3.zero) return;
-        var dir = (isLocalMove) ? -movePos : Pos;
+        var dir = (isLocalMove) ? -(transform.forward * Pos.x) + ((transform.right *Pos.z)) : Pos;
         model.transform.forward = dir;
     }
 
@@ -52,17 +63,32 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C) && isActive)
-        {
-            rb.AddForce(new Vector3(0, JumpForce, 0));
-        }
-
+        GroundCheck();
         if (isDie) Die();
+
+        if (Input.GetKeyDown(KeyCode.C) && isActive && isGrounded)
+        {
+            Jump();
+        }
+    }
+   
+    private void GroundCheck()
+    {
+        Vector3 checkPos = transform.position + Vector3.up * -1;
+        Collider[] obj = Physics.OverlapSphere(checkPos, groundCheckDis, ~LayerMask.GetMask("Player"));
+
+        if (obj.Length != 0) isGrounded = true;
+        else isGrounded = false;
     }
 
     private void Die()
     {
         GameManager.instance.ReStart();
+    }
+
+    private void Jump()
+    {
+        rb.AddForce(new Vector3(0, JumpForce, 0));
     }
 
     private void OnTriggerEnter(Collider other)

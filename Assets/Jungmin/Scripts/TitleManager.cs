@@ -34,8 +34,11 @@ public class TitleManager : MonoBehaviour
             Color color = pText.color;
             color.a = color.a + (sign * Time.deltaTime);
             pText.color = color;
-            if(pText.color.a >= 255 || pText.color.a <= 0)
+
+            if(pText.color.a >= 1 || pText.color.a <= 0)
             {
+                color.a = (pText.color.a >= 1) ? 1 : 0;
+                pText.color = color;
                 break;
             }
             yield return null;
