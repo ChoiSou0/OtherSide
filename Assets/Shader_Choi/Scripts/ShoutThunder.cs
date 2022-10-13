@@ -42,12 +42,13 @@ public class ShoutThunder : MonoBehaviour
     {
         Mark.SetActive(true);
         Invoke("Spawn", 2f);
-        Invoke("Effect", 2.1f);
+        Invoke("Effect", 2.5f);
     }
 
     private void Spawn()
     {
         Instantiate(Thunder, SpawnVec, Quaternion.identity);
+        Mark.SetActive(false);
     }
 
     private void Effect()
