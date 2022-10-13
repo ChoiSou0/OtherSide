@@ -15,10 +15,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isLocalMove;
     public bool isActive;
     private bool isGrounded;
+    private bool isIce;
 
     private float gravityVelocity;
     private Rigidbody rb;
     private SpringJoint joint;
+
+    private Vector3 Pos;
 
     void Start()
     {
@@ -54,7 +57,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 Pos = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        if (isIce)
+        {
+            Pos = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        }
+        else
+        {
+            Pos = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        }
+
         if (isActive)
         {
             Move(Pos);
@@ -103,12 +114,20 @@ public class PlayerController : MonoBehaviour
             checkObj.isActive = true;
         }
 
+        if (other.CompareTag("IceGround"))
+        {
+            isIce = true;
+        }
+        else
+        {
+            isIce = false;
+        }
+
         if (other.CompareTag("DeathZone"))
         {
             isDie = true;
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         var checkObj1 = other.GetComponent<InteractObj>();
