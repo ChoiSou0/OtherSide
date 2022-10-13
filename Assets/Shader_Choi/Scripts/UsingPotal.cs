@@ -22,7 +22,7 @@ public class UsingPotal : MonoBehaviour
     {
         if (other.CompareTag("Player") &&
             gameObject.activeSelf && LinkPotal.activeSelf &&
-            Input.GetKeyDown(KeyCode.F))
+            Input.GetKeyDown(KeyCode.X))
         {
             other.transform.position = LinkPotal.transform.position;
         }

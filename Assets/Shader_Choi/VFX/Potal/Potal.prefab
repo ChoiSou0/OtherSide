@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5411810867060832463}
   m_Layer: 0
-  m_Name: Doctor_Strange_Portal
+  m_Name: Potal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

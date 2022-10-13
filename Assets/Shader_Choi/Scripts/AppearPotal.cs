@@ -9,7 +9,7 @@ public class AppearPotal : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player") && 
-            Input.GetKeyDown(KeyCode.F))
+            Input.GetKeyDown(KeyCode.X))
         {
             Potal.SetActive(true);
         }
