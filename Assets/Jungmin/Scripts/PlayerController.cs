@@ -59,6 +59,10 @@ public class PlayerController : MonoBehaviour
         {
             Move(Pos);
         }
+        else
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
     }
 
     private void Update()
