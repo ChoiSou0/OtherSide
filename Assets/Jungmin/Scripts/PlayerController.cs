@@ -34,8 +34,8 @@ public class PlayerController : MonoBehaviour
         Vector3 movePos;
         if (isLocalMove)
         {
-            var v1 = ((transform.forward * Pos.x) * Speed) + (-(transform.right * Pos.z) * Speed);
-            movePos = new Vector3(v1.x, rb.velocity.y, v1.z);
+            var moveDir = ((transform.forward * Pos.x) * Speed) + (-(transform.right * Pos.z) * Speed);
+            movePos = new Vector3(moveDir.x, rb.velocity.y, moveDir.z);
         }
         else
         {
@@ -50,7 +50,15 @@ public class PlayerController : MonoBehaviour
         
         //캐릭터 방향
         if (Pos == Vector3.zero) return;
-        var dir = (isLocalMove) ? -(transform.forward * Pos.x) + ((transform.right *Pos.z)) : Pos;
+        Vector3 dir;
+        if (isLocalMove) 
+        {
+            dir = (transform.forward * Pos.x) + (-(transform.right * Pos.z));
+        }
+        else
+        {
+            dir = new Vector3(movePos.x, 0, movePos.z);
+        }
         model.transform.forward = dir;
     }
 

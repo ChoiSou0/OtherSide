@@ -23,6 +23,15 @@ public class GameManager : MonoBehaviour
         {
             SwapPlayer();
         }
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            Invoke("ExitStage", 0.5f);
+        }
+    }
+
+    private void ExitStage()
+    {
+        SceneManager.LoadScene("SelectStage");
     }
 
     public void ReStart()

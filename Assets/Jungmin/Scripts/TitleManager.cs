@@ -23,7 +23,7 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("Stage_1");
+            SceneManager.LoadScene("SelectStage");
         }
     }
 
