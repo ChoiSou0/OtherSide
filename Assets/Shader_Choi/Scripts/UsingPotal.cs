@@ -24,6 +24,7 @@ public class UsingPotal : MonoBehaviour
             gameObject.activeSelf && LinkPotal.activeSelf &&
             Input.GetKeyDown(KeyCode.X))
         {
+            Debug.Log("telpo");
             other.transform.position = LinkPotal.transform.position;
         }
     }

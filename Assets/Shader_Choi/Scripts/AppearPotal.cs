@@ -11,6 +11,7 @@ public class AppearPotal : MonoBehaviour
         if (other.CompareTag("Player") && 
             Input.GetKeyDown(KeyCode.X))
         {
+            Debug.Log("d");
             Potal.SetActive(true);
         }
     }
