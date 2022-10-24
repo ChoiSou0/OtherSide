@@ -10851,7 +10851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 8
-  JumpForce: 300
+  JumpForce: 400
   groundCheckDis: 0.3
   player_Camera: {fileID: 604414031}
   model: {fileID: 415908644}
@@ -26440,7 +26440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 8
-  JumpForce: 300
+  JumpForce: 400
   groundCheckDis: 0.3
   player_Camera: {fileID: 1445631460}
   model: {fileID: 853071512}
@@ -31375,7 +31375,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1445631460}
-  m_LocalRotation: {x: 0.049318153, y: -0.707673, z: 0.049641296, w: 0.7030664}
+  m_LocalRotation: {x: 0.049318142, y: -0.707673, z: 0.049641278, w: 0.7030664}
   m_LocalPosition: {x: 16.87, y: 13.67, z: -65.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -36936,7 +36936,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875992714}
-  m_LocalRotation: {x: 0.049318153, y: -0.707673, z: 0.049641296, w: 0.7030664}
+  m_LocalRotation: {x: 0.049318142, y: -0.707673, z: 0.049641278, w: 0.7030664}
   m_LocalPosition: {x: 16.87, y: 13.67, z: -65.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

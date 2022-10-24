@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //중력 가속도
-        gravityVelocity = Time.deltaTime * Physics.gravity.y;
+        gravityVelocity += (Time.deltaTime * Physics.gravity.y) * 0.3f;
         if (isGrounded) gravityVelocity = 0f;
 
         rb.velocity = movePos + Vector3.up * gravityVelocity;

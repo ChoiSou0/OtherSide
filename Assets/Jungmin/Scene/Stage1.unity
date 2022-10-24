@@ -41304,6 +41304,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1787042897360641777, guid: 29f3897c9e42bcf4ca3f9606c5671479,
         type: 3}
+      propertyPath: JumpForce
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 1787042897360641777, guid: 29f3897c9e42bcf4ca3f9606c5671479,
+        type: 3}
       propertyPath: player_Camera
       value: 
       objectReference: {fileID: 2009782092}
@@ -41425,6 +41430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144586909319856970, guid: 081677b34960c524884cdcac8183fc2d,
+        type: 3}
+      propertyPath: JumpForce
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3144586909319856970, guid: 081677b34960c524884cdcac8183fc2d,
         type: 3}
