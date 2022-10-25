@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stage5Sky
-  m_Shader: {fileID: -6465566751694194690, guid: 3570384086887324ab831290e68978b0,
+  m_Name: Sun_Mtrl
+  m_Shader: {fileID: -6465566751694194690, guid: 42b46446b4934214faf7d3b4da58d601,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -79,10 +79,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Vector1_3c87712285324012852a947e53d8a3f9: 13.55
     - _AlphaClip: 0
+    - _Amplification: 5
+    - _Amplification2: 5
     - _Blend: 0
     - _BumpScale: 1
+    - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -95,6 +97,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NoisePower: 5
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -103,21 +106,34 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Speed: -1
     - _SrcBlend: 1
     - _Surface: 0
+    - _TilingPower: 250
+    - _TilingPower2: -7
+    - _TilingSpeed: 1
+    - _TilingSpeed2: -1
+    - _WacePower: 5
+    - _WavePower2: -5
+    - _WaveSpeed: 0.1
+    - _WaveSpeed2: -0.1
     - _WorkflowMode: 1
+    - _ZTest: 4
     - _ZWrite: 1
+    - _ZWriteControl: 0
     m_Colors:
-    - Color_41270f14eda946839b1de74ea43691ab: {r: 0.35083035, g: 0.28875935, b: 0.5943396,
-        a: 0}
-    - Color_84c8857e76be4bdfb5469eb72d54726f: {r: 0.32498217, g: 0.6064843, b: 0.6320754,
-        a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColor: {r: 3.622642, g: 1.534229, b: 0.4955501, a: 0}
+    - _MainColor1: {r: 0, g: 0.7313299, b: 1, a: 0}
+    - _MainColor2: {r: 0, g: 0.009654045, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _SubColor: {r: 0.8584906, g: 0.83817613, b: 0.10933607, a: 0}
+    - _TilingColor: {r: 1.097912, g: 2.941732, b: 7.5083, a: 0}
+    - _TilingColor2: {r: 0, g: 0.3123328, b: 3.956219, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &4409642325485646102
+--- !u!114 &2736518805296831749
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

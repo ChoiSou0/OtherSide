@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water1_Mtrl
+  m_Name: Water_Mtrl
   m_Shader: {fileID: -6465566751694194690, guid: fdebc238b5b496f448445cde944fdcb1,
     type: 3}
   m_ValidKeywords: []
@@ -124,14 +124,13 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MainColor: {r: 0, g: 0.4468627, b: 1, a: 0}
-    - _MainColor1: {r: 0.21106255, g: 0.7906401, b: 0.8773585, a: 0}
+    - _MainColor1: {r: 0, g: 0.7313299, b: 1, a: 0}
     - _MainColor2: {r: 0, g: 0.009654045, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _TilingColor: {r: 0.5442169, g: 1.364576, b: 2.958307, a: 0}
-    - _TilingColor2: {r: 0.6008506, g: 0.7783746, b: 2.963286, a: 0}
+    - _TilingColor: {r: 1.097912, g: 2.941732, b: 7.5083, a: 0}
+    - _TilingColor2: {r: 0, g: 0.3123328, b: 3.956219, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3358424968370852466
+--- !u!114 &5312860112699480522
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
