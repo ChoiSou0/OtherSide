@@ -13,20 +13,25 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool isDie;
     [SerializeField] private bool isLocalMove;
+
     public bool isActive;
     private bool isGrounded;
     private bool isIce;
+    private bool isMove;
+    private bool isJump;
 
     private float gravityVelocity;
     private Rigidbody rb;
     private SpringJoint joint;
+    private Animator animator;
 
-    private Vector3 Pos;
+    private Vector3 movePos;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         joint = GetComponent<SpringJoint>();
+        animator = model.GetComponent<Animator>();
     }
 
     private void Move(Vector3 Pos)
@@ -67,16 +72,16 @@ public class PlayerController : MonoBehaviour
     {
         if (isIce)
         {
-            Pos = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            movePos = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         }
         else
         {
-            Pos = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            movePos = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
         }
 
         if (isActive)
         {
-            Move(Pos);
+            Move(movePos);
         }
         else
         {
@@ -86,13 +91,21 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        GroundCheck();
         if (isDie) Die();
+        GroundCheck();
+        AnimationChange();
 
-        if (Input.GetKeyDown(KeyCode.C) && isActive && isGrounded)
+        if (Input.GetKeyDown(KeyCode.Space) && isActive && isGrounded)
         {
             Jump();
         }
+    }
+
+
+    private void AnimationChange()
+    {
+        isMove = (movePos == Vector3.zero) ? false : true;
+        animator.SetBool("isMove", isMove);
     }
    
     private void GroundCheck()
@@ -111,6 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
+        animator.SetTrigger("Jump");
         rb.AddForce(new Vector3(0, JumpForce, 0));
     }
 

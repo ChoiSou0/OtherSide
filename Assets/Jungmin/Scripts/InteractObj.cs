@@ -24,7 +24,7 @@ public abstract class InteractObj : MonoBehaviour
     {
         if (isActive)
         {
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 Interaction();
             }
