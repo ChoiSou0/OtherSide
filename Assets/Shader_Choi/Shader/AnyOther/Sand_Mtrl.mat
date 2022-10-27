@@ -120,11 +120,11 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _ShineDuneHeightMin: 0.47
-    - _ShineThreshold: 0.93
+    - _ShineThreshold: 0.94
     - _SineAmplitude: 2.92
     - _SineFrequency: 8.8
     - _SineRotation: 10.04
-    - _Smoothness: 0.047
+    - _Smoothness: 0.112
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -132,7 +132,7 @@ Material:
     - _SubstrateGrainHeightMax: 0.285
     - _SubstrateTightening: 1.7
     - _Surface: 0
-    - _UVScale: 20
+    - _UVScale: 30
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
