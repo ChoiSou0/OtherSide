@@ -17,11 +17,11 @@ public class GrapplingHook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && player.isActive)
+        if (Input.GetMouseButtonDown(1) && player.isActive)
         {
             StartHook();
         }  
-        else if (Input.GetKeyUp(KeyCode.Z) && player.isActive)
+        else if (Input.GetMouseButtonUp(1) && player.isActive)
         {
             StopHook();
         }
