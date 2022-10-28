@@ -11,7 +11,8 @@ public class CameraRotator : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            transform.Rotate(0, Input.GetAxis("Mouse X") * Speed, 0);
+            float x = Input.GetAxis("Mouse X");
+            transform.Rotate(0, x * Speed, 0);
         }
     }
 }
