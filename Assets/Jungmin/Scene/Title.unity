@@ -1053,6 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 411e4bd8cfd01fb45859d54c97dd3e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Cam: {fileID: 802076581}
   pText: {fileID: 1751368525}
 --- !u!4 &1220785747
 Transform:

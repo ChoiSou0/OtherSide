@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement; 
+using Cam_Control;
 
 public class TitleManager : MonoBehaviour
 {
+    [SerializeField] private GameObject Cam;
     [SerializeField] private Text pText;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,8 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("SelectStage");
+            StartCoroutine(Cam_Ctrl.Enlargement(Cam, -30f, 2f));
+            //SceneManager.LoadScene("SelectStage");
         }
     }
 

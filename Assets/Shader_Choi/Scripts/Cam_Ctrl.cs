@@ -7,13 +7,26 @@ namespace Cam_Control
 {
     public class Cam_Ctrl : MonoBehaviour
     {
-        public static void Enlargement(Transform EnlargementPosition, GameObject Cam)
+    static Transform NowPos;
+
+        public static IEnumerator Enlargement(GameObject Cam, float Distance, float Time)
         {
-            Transform NowPos = Cam.transform;
-            // 아래 코드는 확대 관련
+            NowPos = Cam.transform;
+            
+            Cam.transform.DOLocalMove(new Vector3(NowPos.position.x, NowPos.position.y, NowPos.position.z + Distance),
+                Time).SetEase(Ease.OutQuad); 
+        
+            yield break;
         }
 
+        public static IEnumerator Reduction(GameObject Cam, float Distance, float Time)
+        {
+            NowPos = Cam.transform;
 
-        
+            Cam.transform.DOLocalMove(new Vector3(NowPos.position.x, NowPos.position.y, NowPos.position.z - Distance),
+                Time).SetEase(Ease.OutQuad);
+
+            yield break;    
+        }
     }
 }
