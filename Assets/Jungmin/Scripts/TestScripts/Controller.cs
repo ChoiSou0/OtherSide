@@ -8,7 +8,7 @@ public class Controller : MonoBehaviour
     [SerializeField] private Transform currentNode;
     [SerializeField] private Transform targetNode;
 
-    [SerializeField] private Queue<Walkable> walkPath = new Queue<Walkable>();
+    [SerializeField] private Queue<Walkable> walkPathQueue = new Queue<Walkable>();
 
     private List<Transform> openList = new List<Transform>();
     private List<Transform> closedList = new List<Transform>();
@@ -33,7 +33,7 @@ public class Controller : MonoBehaviour
 
     private void FindPath()
     {
-        List<Walkable> finalList = new List<Walkable>();
+        List<Transform> pathList = new List<Transform>(100);
         foreach (Node node in currentNode.GetComponent<Walkable>().neighborNode)
         {
             if (!node.isActive) continue;
@@ -42,6 +42,17 @@ public class Controller : MonoBehaviour
             openList.Add(node.nodePoint);
             ExplorePath(node);
 
+            if (openList[openList.Count - 1] == targetNode && pathList.Count > openList.Count) 
+            {
+                pathList = openList; 
+            }
+            ResetList();
+        }
+
+        if(pathList.Count != 100)
+        {
+            BuildPath(pathList);
+            FollowPath();
         }
     }
 
@@ -52,17 +63,37 @@ public class Controller : MonoBehaviour
 
         foreach (Node node in path.neighborNode)
         {
-            if (closedList.Contains(node.nodePoint))
+            if (closedList.Contains(node.nodePoint) || !node.isActive)
             {
                 continue;
             }
-            openList.Add(node.nodePoint);
-
+            
             if (targetNode != startNode.nodePoint)
             {
+                openList.Add(node.nodePoint);
                 ExplorePath(node);
-
             }
+        }
+    }
+
+    private void BuildPath(List<Transform> pathList)
+    {
+        foreach(Transform path in pathList)
+        {
+            var walkable = path.GetComponent<Walkable>();
+            walkPathQueue.Enqueue(walkable);
+        }
+        print(walkPathQueue.Dequeue());
+    }
+
+    private void FollowPath()
+    {
+        Sequence walk = DOTween.Sequence();
+
+        for(; walkPathQueue.Count > 0;)
+        {
+            var path = walkPathQueue.Dequeue();
+            walk.Append(transform.DOMove(path.GetWalkPoint(), 0.2f).SetEase(Ease.Linear));
         }
     }
 
@@ -78,5 +109,11 @@ public class Controller : MonoBehaviour
                 currentNode = playerHit.transform;
             }
         }
+    }
+
+    private void ResetList()
+    {
+        openList.Clear();
+        closedList.Clear();
     }
 }
