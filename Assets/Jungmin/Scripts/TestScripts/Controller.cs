@@ -33,31 +33,36 @@ public class Controller : MonoBehaviour
 
     private void FindPath()
     {
-        foreach(Node node in currentNode.GetComponent<Walkable>().neighborNode)
+        List<Walkable> finalList = new List<Walkable>();
+        foreach (Node node in currentNode.GetComponent<Walkable>().neighborNode)
         {
             if (!node.isActive) continue;
 
             closedList.Add(currentNode.transform);
             openList.Add(node.nodePoint);
             ExplorePath(node);
+
         }
     }
 
     private void ExplorePath(Node startNode)
     {
-        if (targetNode == startNode.nodePoint) return;
-
         Walkable path = startNode.nodePoint.GetComponent<Walkable>();
         closedList.Add(startNode.nodePoint);
 
-        foreach(Node node in path.neighborNode)
+        foreach (Node node in path.neighborNode)
         {
             if (closedList.Contains(node.nodePoint))
             {
                 continue;
             }
             openList.Add(node.nodePoint);
-            ExplorePath(node);
+
+            if (targetNode != startNode.nodePoint)
+            {
+                ExplorePath(node);
+
+            }
         }
     }
 

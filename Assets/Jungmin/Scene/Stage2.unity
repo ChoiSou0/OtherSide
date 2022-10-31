@@ -204,7 +204,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &75710188 stripped
 GameObject:
@@ -726,7 +726,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625178502
 GameObject:
@@ -1705,7 +1705,7 @@ Transform:
   - {fileID: 484349894}
   - {fileID: 566706835}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1262606493 stripped
 GameObject:
@@ -1872,7 +1872,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1434238060 stripped
 GameObject:
@@ -2154,7 +2154,7 @@ Transform:
   - {fileID: 714832719}
   - {fileID: 625178503}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1732858129
 GameObject:
@@ -2187,7 +2187,7 @@ Transform:
   - {fileID: 2131056342}
   - {fileID: 861894832}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1756391743
 PrefabInstance:
@@ -7358,7 +7358,7 @@ PrefabInstance:
     - target: {fileID: 8000382483622588230, guid: 578aa0f7a75b99b448e877fcc9f92683,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8000382483622588230, guid: 578aa0f7a75b99b448e877fcc9f92683,
         type: 3}
@@ -7481,7 +7481,7 @@ PrefabInstance:
     - target: {fileID: 4570984441274199822, guid: 7bcf56a22ed81f54880e7bfdccd3c38a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4570984441274199822, guid: 7bcf56a22ed81f54880e7bfdccd3c38a,
         type: 3}
