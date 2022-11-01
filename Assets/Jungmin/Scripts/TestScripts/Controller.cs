@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
-public class Controller : MonoBehaviour
+public partial class Controller : MonoBehaviour
 {
     [SerializeField] private Transform currentNode;
     [SerializeField] private Transform targetNode;
@@ -115,7 +115,7 @@ public class Controller : MonoBehaviour
         Ray ray = new Ray(transform.GetChild(0).transform.position, -transform.up);
         RaycastHit playerHit;
 
-        if (Physics.Raycast(ray, out playerHit))
+        if (Physics.Raycast(ray, out playerHit, ~LayerMask.GetMask("Player")))
         {
             if (playerHit.transform.GetComponent<Walkable>() != null)
             {
