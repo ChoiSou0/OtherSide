@@ -11,8 +11,11 @@ public class Node
 
 public class Walkable : MonoBehaviour
 {
+    readonly private float walkPointOffset = 0.5f;
+
     public List<Node> neighborNode = new List<Node>();
-    private float walkPointOffset = 0.5f;
+    public bool isStair = false;
+    public bool donRotate = false;
 
     public Vector3 GetWalkPoint()
     {

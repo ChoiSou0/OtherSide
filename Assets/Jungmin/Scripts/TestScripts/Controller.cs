@@ -20,6 +20,7 @@ public partial class Controller : MonoBehaviour
     {
         RayCheckToCurrentNode();
         TouchScreen();
+        AnimationCheck();
     }
 
     private void TouchScreen()
@@ -105,7 +106,11 @@ public partial class Controller : MonoBehaviour
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();
-            walk.Append(transform.DOMove(path.GetWalkPoint(), 0.2f).SetEase(Ease.Linear));
+
+            walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
+
+            if (!path.donRotate)
+                walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
         }
         walk.AppendCallback(() => isWalking = false);
     }
@@ -115,7 +120,7 @@ public partial class Controller : MonoBehaviour
         Ray ray = new Ray(transform.GetChild(0).transform.position, -transform.up);
         RaycastHit playerHit;
 
-        if (Physics.Raycast(ray, out playerHit, ~LayerMask.GetMask("Player")))
+        if (Physics.Raycast(ray, out playerHit))
         {
             if (playerHit.transform.GetComponent<Walkable>() != null)
             {

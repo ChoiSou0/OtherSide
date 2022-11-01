@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 818705784}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10497,6 +10497,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 1737579934}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &178946137
 GameObject:
   m_ObjectHideFlags: 0
@@ -10612,6 +10614,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 1095763368}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &180121367
 GameObject:
   m_ObjectHideFlags: 0
@@ -10695,7 +10699,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b04ba9503dcb685429bf26686ed62900,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b04ba9503dcb685429bf26686ed62900,
         type: 3}
@@ -10802,6 +10806,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: b04ba9503dcb685429bf26686ed62900,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2843909369972686622, guid: b04ba9503dcb685429bf26686ed62900,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e992881192c325346bd9e8281a107f18, type: 2}
     - target: {fileID: -2084811680363313996, guid: b04ba9503dcb685429bf26686ed62900,
         type: 3}
       propertyPath: m_Layer
@@ -10860,6 +10874,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b04ba9503dcb685429bf26686ed62900,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: b04ba9503dcb685429bf26686ed62900,
         type: 3}
@@ -21304,6 +21323,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 1620121171}
     isActive: 1
+  isStair: 0
+  donRotate: 1
 --- !u!1 &731557047
 GameObject:
   m_ObjectHideFlags: 0
@@ -21945,6 +21966,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 728467437}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &840691274
 GameObject:
   m_ObjectHideFlags: 0
@@ -27214,6 +27237,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 1588815377}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!4 &1029088413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b04ba9503dcb685429bf26686ed62900,
@@ -27556,6 +27581,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 827056872}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &1109408837
 GameObject:
   m_ObjectHideFlags: 0
@@ -28211,6 +28238,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1320181247}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1361187579 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b04ba9503dcb685429bf26686ed62900,
+    type: 3}
+  m_PrefabInstance: {fileID: 208295571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1361187580
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361187579}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28c50dbdaf196a24580f63c53e228069, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1458459234
 GameObject:
   m_ObjectHideFlags: 0
@@ -28459,6 +28512,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 2058305792}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &1611860353
 GameObject:
   m_ObjectHideFlags: 0
@@ -28681,6 +28736,8 @@ MonoBehaviour:
   neighborNode:
   - nodePoint: {fileID: 728467437}
     isActive: 1
+  isStair: 0
+  donRotate: 1
 --- !u!1 &1737053086
 GameObject:
   m_ObjectHideFlags: 0
@@ -28879,6 +28936,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 1740200245}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &1740200241
 GameObject:
   m_ObjectHideFlags: 0
@@ -28994,6 +29053,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 969911837}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &1749684468
 GameObject:
   m_ObjectHideFlags: 0
@@ -39111,6 +39172,8 @@ MonoBehaviour:
   neighborNode:
   - nodePoint: {fileID: 173653246}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1 &1983617083
 GameObject:
   m_ObjectHideFlags: 0
@@ -39324,6 +39387,8 @@ MonoBehaviour:
     isActive: 1
   - nodePoint: {fileID: 178946141}
     isActive: 1
+  isStair: 0
+  donRotate: 0
 --- !u!1001 &2065368373
 PrefabInstance:
   m_ObjectHideFlags: 0
