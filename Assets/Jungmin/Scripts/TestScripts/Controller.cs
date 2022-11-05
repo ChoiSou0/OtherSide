@@ -16,7 +16,7 @@ public partial class Controller : MonoBehaviour
 
     private bool isWalking = false;
 
-    void Update()
+    protected virtual void Update()
     {
         RayCheckToCurrentNode();
         TouchScreen();
