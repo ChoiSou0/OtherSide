@@ -34,7 +34,7 @@ namespace Cam_Control
         public void Shake(Vector3 cameraPos, float Duration, float ShakeRange)
         {
             cameraPos = Camera.main.transform.position;
-            InvokeRepeating(StartShake(ShakeRange), 0f, 0.005f);
+            //InvokeRepeating(StartShake(ShakeRange), 0f, 0.005f);
             Invoke("StopShake", ShakeRange);
         }
 

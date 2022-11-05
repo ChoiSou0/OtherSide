@@ -28390,13 +28390,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1547000292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93cb388617650f040a9aa547d2a6ed89, type: 3}
+  m_Script: {fileID: 11500000, guid: 92b45c6b0fc644443b1de4c9310112b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   targetNode: {fileID: 0}
   openList: []
   closedList: []
+  isActive: 0
 --- !u!1 &1588815373
 GameObject:
   m_ObjectHideFlags: 0
