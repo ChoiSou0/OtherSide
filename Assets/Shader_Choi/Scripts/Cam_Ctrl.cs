@@ -12,6 +12,7 @@ namespace Cam_Control
         private static float shakeRange;
         private static bool Cancel;
 
+        // 카메라 이동
         public static IEnumerator Move(GameObject Cam ,Vector3 Pos, float Time)
         {
             Cam.transform.DOMove(Pos, Time).SetEase(Ease.OutQuad);
@@ -19,13 +20,7 @@ namespace Cam_Control
             yield break;
         }
 
-        public static IEnumerator BackMove(GameObject Cam, Vector3 Pos, float Time)
-        {
-            Cam.transform.DOMove(Pos, Time).SetEase(Ease.OutQuad);
-
-            yield break;
-        }
-
+        // 카메라 확대
         public static IEnumerator EnlargementAndReduction(Camera Cam, float Size, float Time)
         {
             Cam.DOOrthoSize(Size, Time).SetEase(Ease.OutQuad);
@@ -91,17 +86,20 @@ namespace Cam_Control
 
         #endregion
 
+        // 페이드 인
         public static IEnumerator FadeIn(Image Fade, float Time)
         {
-            Fade.DOColor(Color.black, 0);
-            Fade.DOColor(Color.white, Time);
+            Debug.Log(Fade);
+            Fade.DOColor(new Color(0, 0, 0, 1), 0);
+            Fade.DOColor(new Color(0, 0, 0, 0), Time).SetEase(Ease.InQuad);
 
             yield break;
         }
 
+        // 페이드 아웃
         public static IEnumerator FadeOut(Image Fade, float Time)
         {
-            Fade.DOColor(Color.black, Time);
+            Fade.DOColor(Color.black, Time).SetEase(Ease.InQuad);
 
             yield break;
         }
