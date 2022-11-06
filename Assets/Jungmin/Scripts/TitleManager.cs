@@ -25,8 +25,8 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            StartCoroutine(Cam_Ctrl.Enlargement(Cam, -30f, 2f));
-            //SceneManager.LoadScene("SelectStage");
+            //StartCoroutine(Cam_Ctrl.Enlargement(Cam, -30f, 2f));
+            SceneManager.LoadScene("SelectStage");
         }
     }
 

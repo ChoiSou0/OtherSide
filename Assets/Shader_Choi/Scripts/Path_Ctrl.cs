@@ -8,7 +8,7 @@ public class Path_Ctrl : MonoBehaviour
 
     public bool isStair;
 
-    private float WalkOffset = 0.3f;
+    private float WalkOffset = 0.4f;
     private float StairOffset = 0f;
     public float stair;
 
