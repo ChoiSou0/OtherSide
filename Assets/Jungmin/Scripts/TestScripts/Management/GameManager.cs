@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using ProductionEvent;
+using Event = ProductionEvent.Event;
+
+namespace Jungmin
+{
+    public class GameManager : Singleton<GameManager>
+    {
+        [SerializeField] Image fadeImage;
+
+        private StageManager currentStage = null;
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            SceneManager.sceneLoaded +=
+                (Scene scene, LoadSceneMode mode) => { StartCoroutine(Event.FadeOut(fadeImage)); };
+
+            SceneManager.sceneLoaded += InitStage;
+        }
+
+        public void LoadStage(string stageName)
+        {
+            SceneManager.LoadScene(stageName);
+        }
+
+        public void InitStage(Scene scene, LoadSceneMode mode)
+        {
+            currentStage = FindObjectOfType<StageManager>();
+        }
+        
+    }
+}
