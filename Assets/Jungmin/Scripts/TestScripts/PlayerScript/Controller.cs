@@ -102,6 +102,7 @@ public partial class Controller : MonoBehaviour
     {
         Sequence walk = DOTween.Sequence();
         isWalking = true;
+        transform.SetParent(targetNode);
 
         for (; walkPathQueue.Count > 0;)
         {
@@ -139,6 +140,7 @@ public partial class Controller : MonoBehaviour
     {
         DOTween.KillAll();
         walkPathQueue.Clear();
+        transform.parent = null; 
         isWalking = false;
     }
 }

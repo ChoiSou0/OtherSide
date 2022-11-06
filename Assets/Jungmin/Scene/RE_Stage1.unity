@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
+  m_SubtractiveShadowColor: {r: 1, g: 1, b: 1, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -21322,7 +21322,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 827056872}
     isActive: 1
   - nodePoint: {fileID: 1620121171}
-    isActive: 1
+    isActive: 0
   isStair: 0
   donRotate: 1
 --- !u!1 &731557047
