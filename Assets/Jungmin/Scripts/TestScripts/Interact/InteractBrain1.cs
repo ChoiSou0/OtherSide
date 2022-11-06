@@ -45,7 +45,7 @@ public class InteractBrain1 : MonoBehaviour
         for (int i = 0; i < interactions.Count; i++)
         {
             interactions[i].transform.Rotate
-                ((interactions[i].RotateDirection * Input.GetAxisRaw("Mouse Y")) * rotateValue, 0f, 0f, Space.World);
+                ((interactions[i].RotateDirection * Input.GetAxisRaw("Mouse Y")) * rotateValue, 0f, 0f, Space.Self);
         }
     }
 

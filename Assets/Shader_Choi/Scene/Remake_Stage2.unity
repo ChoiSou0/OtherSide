@@ -2017,7 +2017,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: e992881192c325346bd9e8281a107f18, type: 2}
+      objectReference: {fileID: 2100000, guid: 1956b28b50703384fa213000160a7329, type: 2}
     - target: {fileID: -2084811680363313996, guid: b04ba9503dcb685429bf26686ed62900,
         type: 3}
       propertyPath: m_Layer
@@ -2802,9 +2802,10 @@ GameObject:
   - component: {fileID: 1283335875}
   - component: {fileID: 1283335874}
   - component: {fileID: 1283335873}
+  - component: {fileID: 1283335877}
   m_Layer: 11
   m_Name: Player (1)
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2876,6 +2877,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1283335877
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283335872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1.7, z: 0.39}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1315341408
 GameObject:
   m_ObjectHideFlags: 0
@@ -19629,9 +19643,10 @@ GameObject:
   - component: {fileID: 2181930993057398773}
   - component: {fileID: 2181930993057398777}
   - component: {fileID: 2181930993057398778}
+  - component: {fileID: 2181930993057398779}
   m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19668,7 +19683,20 @@ MonoBehaviour:
   targetNode: {fileID: 0}
   openList: []
   closedList: []
-  isActive: 0
+  isActive: 1
+--- !u!65 &2181930993057398779
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181930993057398775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3, y: 1.7, z: 0.39}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &2181930993106990319
 Animator:
   serializedVersion: 4

@@ -29,6 +29,31 @@ public class Stage2 : MonoBehaviour
                 StartCoroutine(Ending());
             }
         }
+
+        PlayerChange();
+    }
+
+    private void PlayerChange()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit Hit;  
+            
+            if(Physics.Raycast(ray, out Hit))
+            {
+                if(Hit.collider.tag == "Player")
+                {
+                    player1.isActive = true;
+                    player2.isActive = false;
+                }
+                else if (Hit.collider.tag == "Player1")
+                {
+                    player1.isActive = false;
+                    player2.isActive = true;
+                }
+            }
+        }
     }
 
     private IEnumerator Ending()
