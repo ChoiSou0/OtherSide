@@ -3,27 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using Jungmin;
 
 public partial class Controller : MonoBehaviour
 {
-    [SerializeField] private Transform currentNode;
-    [SerializeField] private Transform targetNode;
+    public Transform currentNode;
+    public Transform targetNode;
 
     [SerializeField] private Queue<Walkable> walkPathQueue = new Queue<Walkable>();
 
-    [SerializeField] private List<Transform> openList = new List<Transform>();
-    [SerializeField] private List<Transform> closedList = new List<Transform>();
+    protected List<Transform> openList = new List<Transform>();
+    protected List<Transform> closedList = new List<Transform>();
 
     private bool isWalking = false;
 
     protected virtual void Update()
     {
         RayCheckToCurrentNode();
-        TouchScreen();
         AnimationCheck();
+        TouchScreen();
     }
 
-    private void TouchScreen()
+    protected virtual void TouchScreen()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -34,13 +35,13 @@ public partial class Controller : MonoBehaviour
 
             if (Physics.Raycast(ray, out mouseHit))
             {
-                targetNode = mouseHit.transform;
+                targetNode = mouseHit.transform;               
                 FindPathAndWalking();
             }
         }
     }
 
-    private void FindPathAndWalking()
+    protected void FindPathAndWalking()
     {
         List<Transform> pathList = new List<Transform>();
         int pathCount = 100;
@@ -49,7 +50,9 @@ public partial class Controller : MonoBehaviour
         {
             if (!node.isActive) continue;
 
-            closedList.Add(currentNode.transform);
+            openList.Add(currentNode);
+            closedList.Add(currentNode);
+
             openList.Add(node.nodePoint);
             ExplorePath(node);
 
@@ -69,7 +72,7 @@ public partial class Controller : MonoBehaviour
         }
     }
 
-    private void ExplorePath(Node startNode)
+    protected void ExplorePath(Node startNode)
     {
         Walkable path = startNode.nodePoint.GetComponent<Walkable>();
         closedList.Add(startNode.nodePoint);
@@ -89,7 +92,7 @@ public partial class Controller : MonoBehaviour
         }
     }
 
-    private void BuildPath(List<Transform> pathList)
+    protected virtual void BuildPath(List<Transform> pathList)
     {
         foreach (Transform path in pathList)
         {
@@ -98,7 +101,7 @@ public partial class Controller : MonoBehaviour
         }
     }
 
-    private void FollowPath()
+    protected void FollowPath()
     {
         Sequence walk = DOTween.Sequence();
         isWalking = true;
@@ -106,11 +109,14 @@ public partial class Controller : MonoBehaviour
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();
+            if (path.transform == currentNode) continue;
 
             walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
 
             if (!path.donRotate)
                 walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
+
+            transform.SetParent(path.transform);
         }
         walk.AppendCallback(() => isWalking = false);
     }
@@ -135,10 +141,11 @@ public partial class Controller : MonoBehaviour
         closedList.Clear();
     }
 
-    private void StopWalking()
+    protected void StopWalking()
     {
-        DOTween.KillAll();
+        DOTween.Kill(this.gameObject);
         walkPathQueue.Clear();
+        transform.parent = currentNode.transform; 
         isWalking = false;
     }
 }
