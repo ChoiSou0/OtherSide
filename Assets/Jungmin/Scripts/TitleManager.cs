@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
-using Cam_Control;
+using UnityEngine.SceneManagement;
+using Event = ProductionEvent.Event;
+using Jungmin;
 
 public class TitleManager : MonoBehaviour
 {
@@ -24,8 +25,15 @@ public class TitleManager : MonoBehaviour
     {
         if (Input.anyKey)
         {
-            SceneManager.LoadScene("SelectStage");
+            StartCoroutine(StartGame());
         }
+    }
+
+    IEnumerator StartGame()
+    {
+        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("RE_Stage1");
     }
 
     IEnumerator TextAlpha(int sign)
