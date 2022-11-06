@@ -8,7 +8,7 @@ public class InteractBrain1 : MonoBehaviour
 {
     [SerializeField] float rotateValue;
 
-    public List<Interaction> interactions;
+    public List<Interaction1> interactions;
     private bool isActive;
    
     void Update()
@@ -40,12 +40,12 @@ public class InteractBrain1 : MonoBehaviour
 
     private void RotateToInteract()
     {
-        transform.Rotate(0f, 0f, Input.GetAxisRaw("Mouse X") * rotateValue, Space.World);
+        transform.Rotate(Input.GetAxisRaw("Mouse Y") * rotateValue, 0f, 0f, Space.World);
 
         for (int i = 0; i < interactions.Count; i++)
         {
             interactions[i].transform.Rotate
-                (0f, (interactions[i].RotateDirection * Input.GetAxisRaw("Mouse X")) * rotateValue, 0f, Space.World);
+                ((interactions[i].RotateDirection * Input.GetAxisRaw("Mouse Y")) * rotateValue, 0f, 0f, Space.World);
         }
     }
 

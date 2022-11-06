@@ -203,8 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 2181930993057398778}
   player2: {fileID: 1283335873}
-  End1: {fileID: 1551064755}
-  End2: {fileID: 881722768}
+  End1: {fileID: 2119166894}
+  End2: {fileID: 1943843986}
 --- !u!4 &69564072
 Transform:
   m_ObjectHideFlags: 0
@@ -2856,8 +2856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   targetNode: {fileID: 0}
-  openList: []
-  closedList: []
+  OtherPlayer: {fileID: 0}
+  isFollow: 0
   isActive: 0
 --- !u!4 &1283335876
 Transform:
@@ -19597,8 +19597,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   targetNode: {fileID: 0}
-  openList: []
-  closedList: []
+  OtherPlayer: {fileID: 0}
+  isFollow: 0
   isActive: 0
 --- !u!4 &2181930993057398774
 Transform:
