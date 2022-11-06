@@ -55,7 +55,7 @@ namespace ProductionEvent
                 current += Time.deltaTime;
                 percent = current / time;
 
-                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, size, time);
+                camera.orthographicSize = Mathf.Lerp(camera.orthographicSize, size, percent);
 
                 yield return null;
             }

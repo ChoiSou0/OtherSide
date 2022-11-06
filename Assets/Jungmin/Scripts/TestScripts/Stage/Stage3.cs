@@ -1,46 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ProductionEvent;
 using Event = ProductionEvent.Event;
+using Jungmin;
 
 public class Stage3 : StageManager
 {
     [SerializeField] InteractBrain interactBrain;
+    private bool isPortal = false;
+
     private void Start()
     {
-        StartCoroutine(Event.CameraShake(Camera.main, 0.8f, 3));    
+        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(18.81f, 18.6f, 19.06f), 180f));    
     }
 
     protected override void Update()
     {
         base.Update();
+        if (!isPortal) PortalCondition();
+
+        if (player2.isFollow && player1.currentNode.CompareTag("ClearPortal"))
+            player1.OtherPlayerFollowMe(player1.currentNode);
     }
 
-    public override void StageClear()
+    protected override void StageClear()
     {
-        
+        StartCoroutine(Stage3ClearEvent());
     }
 
-    protected override void isPortalCondition()
+    protected override void ClearCheck()
     {
-        var conditionObj = interactBrain.interactions[1];
-        if (conditionObj.interactionAngle == conditionObj.activeValues[1])
+        if(player1.currentNode == portal && player2.currentNode == portal)
         {
-            StartCoroutine(PortalApeear());
-            isPortal = true;
+            StageClear();
+            isClearStage = true;
         }
+    }
+
+    private void PortalCondition()
+    {
+        var neighborNode = player1.currentNode.GetComponent<Walkable>().neighborNode;
+        foreach (var node in neighborNode)
+        {
+            if (player2.currentNode == node.nodePoint && node.isActive)
+            {
+                StartCoroutine(PortalApeear());
+                isPortal = true;
+            }
+        }      
     }
 
     private IEnumerator PortalApeear()
     {
-        StartCoroutine(Event.CameraShake(Camera.main, 0.8f, 3));
+        StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
         StartCoroutine(Event.ObjectAppearance(portal.gameObject, portal.transform.position + Vector3.up * 10.5f, 3f));
+        yield return new WaitForSeconds(3);
+
+        LayerChange(portal, 10);
         yield break;
     }
 
     private IEnumerator Stage3ClearEvent()
     {
+        yield return new WaitForSeconds(0.08f); 
+        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        yield return new WaitForSeconds(1);
+
+        //æ¿ ¿Ãµø
+
         yield break;
     }
 }

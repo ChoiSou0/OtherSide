@@ -5,13 +5,13 @@ using UnityEngine;
 public abstract class StageManager : MonoBehaviour
 {
     [HideInInspector] public bool isClearStage = false;
-
     [SerializeField] private List<PathCondition> pathConditions;
-    [SerializeField] protected Transform portal;
-    [SerializeField] LayerMask portalLayerMask;
-    protected bool isClearOneTime = false;
-    protected bool isPortal= false;
 
+    [SerializeField] protected Transform portal;
+    [SerializeField] protected Player player1;
+    [SerializeField] protected Player player2;
+
+    protected string nextSceneName;
     public void ConnectPathOfStage()
     {
         foreach(PathCondition condition in pathConditions)
@@ -42,19 +42,18 @@ public abstract class StageManager : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(!isClearStage) ConnectPathOfStage();
-        if(!isClearOneTime) ClearCheck();
-        if (!isPortal) isPortalCondition();
+        if (isClearStage) return;
+        ConnectPathOfStage();
+        ClearCheck();
     }
 
-    public abstract void StageClear();
-    protected abstract void isPortalCondition();
-    private void ClearCheck()
+    protected abstract void StageClear();
+    protected abstract void ClearCheck();
+    protected void LayerChange(Transform transform, int layer)
     {
-        if (isClearStage)
+        foreach (Transform child in transform)
         {
-            StageClear();
-            isClearOneTime = true;
+            child.gameObject.layer = layer;
         }
     }
 }

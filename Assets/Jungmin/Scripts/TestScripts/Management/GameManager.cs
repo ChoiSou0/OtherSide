@@ -10,9 +10,8 @@ namespace Jungmin
 {
     public class GameManager : Singleton<GameManager>
     {
-        [SerializeField] Image fadeImage;
-
-        private StageManager currentStage = null;
+        [HideInInspector] public StageManager currentStage = null;
+        public Image fadeImage;
 
         protected override void Awake()
         {

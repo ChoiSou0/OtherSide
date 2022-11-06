@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        GameManager.instance.ReStart();
+ 
     }
 
     private void Jump()

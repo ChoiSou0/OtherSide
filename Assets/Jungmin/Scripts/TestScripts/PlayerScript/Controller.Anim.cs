@@ -5,8 +5,8 @@ using UnityEngine;
 public partial class Controller 
 {
     private Animator animator;
-    private void Awake() => animator = transform.GetChild(1).GetComponent<Animator>();
-    private void AnimationCheck()
+    protected virtual void Awake() => animator = transform.GetChild(1).GetComponent<Animator>();
+    protected void AnimationCheck()
     {
         animator.SetBool("isWalk", isWalking);
 
