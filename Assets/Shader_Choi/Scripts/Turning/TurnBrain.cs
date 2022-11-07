@@ -23,7 +23,6 @@ public class TurnBrain : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !isTurning)
         {
-            Debug.Log("돌아돌아");
             //isTurning = true;
 
             for (int i = 0; i < TurnObject.Count; i++)

@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public partial class Controller1 : MonoBehaviour
 {
-    [SerializeField] private Transform currentNode;
+    [SerializeField] public Transform currentNode;
     [SerializeField] protected Transform targetNode;
 
     [SerializeField] private Queue<Walkable> walkPathQueue = new Queue<Walkable>();

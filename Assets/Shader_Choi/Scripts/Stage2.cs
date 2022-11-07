@@ -8,6 +8,9 @@ public class Stage2 : MonoBehaviour
 {
     [SerializeField] private Player1 player1;
     [SerializeField] private Player1 player2;
+    
+    [SerializeField] private Controller1 p1;
+    [SerializeField] private Controller1 p2                                                                                                                                                                                           ;
 
     [SerializeField] Transform End1;
     [SerializeField] Transform End2;
