@@ -10,12 +10,13 @@ public partial class Controller : MonoBehaviour
     public Transform currentNode;
     public Transform targetNode;
 
-    [SerializeField] private Queue<Walkable> walkPathQueue = new Queue<Walkable>();
+    [SerializeField] protected Queue<Walkable> walkPathQueue = new Queue<Walkable>();
 
     protected List<Transform> openList = new List<Transform>();
     protected List<Transform> closedList = new List<Transform>();
 
     private bool isWalking = false;
+    private Sequence walk;
 
     protected virtual void Update()
     {
@@ -101,9 +102,9 @@ public partial class Controller : MonoBehaviour
         }
     }
 
-    protected void FollowPath()
+    protected virtual void FollowPath()
     {
-        Sequence walk = DOTween.Sequence();
+        walk = DOTween.Sequence();
         isWalking = true;
 
         for (; walkPathQueue.Count > 0;)
@@ -143,9 +144,10 @@ public partial class Controller : MonoBehaviour
 
     protected void StopWalking()
     {
-        DOTween.Kill(this.gameObject);
+        isWalking = false;
+        walk.Kill();
+        
         walkPathQueue.Clear();
         transform.parent = currentNode.transform; 
-        isWalking = false;
     }
 }

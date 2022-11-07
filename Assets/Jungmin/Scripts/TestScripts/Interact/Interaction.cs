@@ -39,6 +39,7 @@ public class Interaction : MonoBehaviour
 
     protected bool ActiveChecking()
     {
+        //스위치식으로 수정하기
         if (interactType == InteractType.Rotate)
             for (int i = 0; i < activeValues.Length; i++)
             {

@@ -19,7 +19,7 @@ public class Stage3 : StageManager
         base.Update();
         if (!isPortal) PortalCondition();
 
-        if (player2.isFollow && player1.currentNode.CompareTag("ClearPortal"))
+        if (player2.playerType == PlayerType.Follow && player1.currentNode == portal)
             player1.OtherPlayerFollowMe(player1.currentNode);
     }
 
