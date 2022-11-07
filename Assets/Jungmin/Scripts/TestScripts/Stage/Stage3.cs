@@ -11,7 +11,7 @@ public class Stage3 : StageManager
 
     private void Start()
     {
-        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(18.81f, 18.6f, 19.06f), 180f));    
+        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 18.6f, 18.59f), 180f));    
     }
 
     protected override void Update()
