@@ -807,7 +807,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: e1a939ae070db2e4c8c46134d600a42b, type: 2}
+      objectReference: {fileID: 2100000, guid: b124005ff2a48f147b9b07793d04262e, type: 2}
     - target: {fileID: -3322557765893234580, guid: 5913a32e44fb00746aa025f8c9978bec,
         type: 3}
       propertyPath: m_Materials.Array.data[2]
