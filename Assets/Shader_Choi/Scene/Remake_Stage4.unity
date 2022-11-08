@@ -610,7 +610,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 285555555}
   - component: {fileID: 285555557}
   - component: {fileID: 285555556}
+  - component: {fileID: 285555559}
   - component: {fileID: 285555558}
   m_Layer: 0
   m_Name: Object017 (1)
@@ -852,6 +853,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TurnObject:
   - {fileID: 1841680685}
+  - {fileID: 1489726996}
+--- !u!65 &285555559
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285555554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14828786, y: 0.20496128, z: 0.20496133}
+  m_Center: {x: 0, y: 0.00000003725291, z: 0.000000022351747}
 --- !u!1 &389885894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1027,6 +1042,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 703001025}
+  - component: {fileID: 703001026}
   m_Layer: 0
   m_Name: Block3
   m_TagString: Untagged
@@ -1055,6 +1071,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &703001026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703001024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299f681aa92c5d44db3742300d254088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisrotation: 0
+  Rotation: -90
+  RotationPower: 90
+  rotationdirection: 1
+  isTurn: 0
 --- !u!1 &807426802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,6 +1099,8 @@ GameObject:
   - component: {fileID: 807426805}
   - component: {fileID: 807426804}
   - component: {fileID: 807426803}
+  - component: {fileID: 807426807}
+  - component: {fileID: 807426806}
   m_Layer: 0
   m_Name: Object016 (1)
   m_TagString: Untagged
@@ -1140,6 +1175,34 @@ Transform:
   m_Father: {fileID: 703001025}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &807426806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807426802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8259328f347a1e4baa4b65dfbcea720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnObject:
+  - {fileID: 1489726996}
+  - {fileID: 703001026}
+--- !u!65 &807426807
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807426802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14828786, y: 0.25021932, z: 0.2502197}
+  m_Center: {x: 0, y: 0.00000007450582, z: 0.000000014901165}
 --- !u!1 &813084297
 GameObject:
   m_ObjectHideFlags: 0
@@ -2188,6 +2251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1489726995}
+  - component: {fileID: 1489726996}
   m_Layer: 0
   m_Name: Block2
   m_TagString: Untagged
@@ -2216,6 +2280,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1489726996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1489726994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299f681aa92c5d44db3742300d254088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axisrotation: 0
+  Rotation: -90
+  RotationPower: 90
+  rotationdirection: 1
+  isTurn: 0
 --- !u!1 &1618649240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2432,9 +2513,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299f681aa92c5d44db3742300d254088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  axisrotation: 0
   Rotation: 90
   RotationPower: 90
   rotationdirection: -1
+  isTurn: 0
 --- !u!1 &2047511260
 GameObject:
   m_ObjectHideFlags: 0
