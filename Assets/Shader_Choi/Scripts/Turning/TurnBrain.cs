@@ -5,7 +5,7 @@ using UnityEngine;
 public class TurnBrain : MonoBehaviour
 {
     public List<Turn_Info> TurnObject;
-    private bool isTurning;
+    [SerializeField] private int isTurn_Cnt;
 
     // Start is called before the first frame update
     void Start()
@@ -21,13 +21,18 @@ public class TurnBrain : MonoBehaviour
 
     private void Turning()
     {
-        if (Input.GetMouseButtonDown(0) && !isTurning)
+        if (Input.GetMouseButtonDown(0))
         {
-            //isTurning = true;
-
             for (int i = 0; i < TurnObject.Count; i++)
             {
-                TurnObject[i].Turn();                         
+                if (!TurnObject[i].isTurn)
+                {
+                    TurnObject[i].Turn();
+                }
+                else
+                {
+                    break; 
+                }
             }
         }
     }

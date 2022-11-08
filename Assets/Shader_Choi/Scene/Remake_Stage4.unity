@@ -763,6 +763,7 @@ GameObject:
   - component: {fileID: 285555555}
   - component: {fileID: 285555557}
   - component: {fileID: 285555556}
+  - component: {fileID: 285555558}
   m_Layer: 0
   m_Name: Object017 (1)
   m_TagString: Untagged
@@ -837,6 +838,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285555554}
   m_Mesh: {fileID: 5828714007021999026, guid: 5e1ce694231900b47a9e6570ec0f82fb, type: 3}
+--- !u!114 &285555558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285555554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8259328f347a1e4baa4b65dfbcea720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TurnObject:
+  - {fileID: 1841680685}
 --- !u!1 &389885894
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2202,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489726994}
-  m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -3.739999, y: 5.9600015, z: -2.7499924}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
@@ -2200,7 +2215,7 @@ Transform:
   - {fileID: 1828744180}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1618649240
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2391,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1841680684}
+  - component: {fileID: 1841680685}
   m_Layer: 0
   m_Name: Block1
   m_TagString: Untagged
@@ -2404,6 +2420,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1841680685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841680683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 299f681aa92c5d44db3742300d254088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Rotation: 90
+  RotationPower: 90
+  rotationdirection: -1
 --- !u!1 &2047511260
 GameObject:
   m_ObjectHideFlags: 0
