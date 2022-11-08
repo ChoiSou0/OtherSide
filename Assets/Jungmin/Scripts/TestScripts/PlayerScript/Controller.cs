@@ -14,9 +14,11 @@ public partial class Controller : MonoBehaviour
 
     protected List<Transform> openList = new List<Transform>();
     protected List<Transform> closedList = new List<Transform>();
+    protected int nodeCount = 0;
 
     private bool isWalking = false;
     private Sequence walk;
+
 
     protected virtual void Update()
     {
@@ -98,6 +100,7 @@ public partial class Controller : MonoBehaviour
         foreach (Transform path in pathList)
         {
             var walkable = path.GetComponent<Walkable>();
+            nodeCount++;
             walkPathQueue.Enqueue(walkable);
         }
     }
@@ -120,6 +123,7 @@ public partial class Controller : MonoBehaviour
             transform.SetParent(path.transform);
         }
         walk.AppendCallback(() => isWalking = false);
+        walk.AppendCallback(() => nodeCount = 0);
     }
 
     private void RayCheckToCurrentNode()
@@ -148,6 +152,7 @@ public partial class Controller : MonoBehaviour
         walk.Kill();
         
         walkPathQueue.Clear();
+        nodeCount = 0;
         transform.parent = currentNode.transform; 
     }
 }

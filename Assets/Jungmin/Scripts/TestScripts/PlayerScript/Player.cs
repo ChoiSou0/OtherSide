@@ -28,6 +28,7 @@ public class Player : Controller
     {
         base.Update();
     }
+
     private void CheckOtherPlayer()
     {
         if (OtherPlayer == null) return;
@@ -38,7 +39,7 @@ public class Player : Controller
         }
         else if (playerType == PlayerType.Basic && OtherPlayer.playerType == PlayerType.Basic)
         {
-            MovePlayerDecision += this.ShortPathThenOther;
+            OtherPlayer.MovePlayerDecision += this.ShortPathThenOther;
         }
     }
 
@@ -56,22 +57,23 @@ public class Player : Controller
 
     protected override void FollowPath()
     {
-        if (MovePlayerDecision != null)
+        
+        if (MovePlayerDecision != null && !MovePlayerDecision(nodeCount))
         {
-            if (!MovePlayerDecision(OtherPlayer.walkPathQueue.Count))
-            {
-                StopWalking();
-                return;
-            }
+            return;
         }
         base.FollowPath();
     }
 
     private bool ShortPathThenOther(int otherPathCount)
     {
-        print(otherPathCount);
-        if (otherPathCount > this.walkPathQueue.Count || otherPathCount == 0) return true;
-        else return false;
+        Debug.Log(gameObject.name + " " + nodeCount);
+        Debug.Log(gameObject.name + " " + otherPathCount);
+        if ((otherPathCount <= nodeCount || otherPathCount == 1) && otherPathCount != 0)
+        {
+            return false;
+        }
+        return true;
     }
     private void FollowOther(Transform target)
     {

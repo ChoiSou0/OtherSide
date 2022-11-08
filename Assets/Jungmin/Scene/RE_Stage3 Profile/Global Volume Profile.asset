@@ -1,5 +1,43 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8257231919829085999
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.2
+--- !u!114 &-7993612893607259267
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 1
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.9528302, g: 0.57079923, b: 0.57079923, a: 1}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  balance:
+    m_OverrideState: 1
+    m_Value: 20
 --- !u!114 &-5116012087492753230
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -38,6 +76,8 @@ MonoBehaviour:
   - {fileID: 8244839721173758370}
   - {fileID: 3521929592763476541}
   - {fileID: -5116012087492753230}
+  - {fileID: -8257231919829085999}
+  - {fileID: -7993612893607259267}
 --- !u!114 &3521929592763476541
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -56,7 +96,7 @@ MonoBehaviour:
     m_Value: 0.95
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.8
   scatter:
     m_OverrideState: 1
     m_Value: 0.8
@@ -71,7 +111,7 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   dirtTexture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -93,16 +133,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.7176471, g: 0.30462933, b: 0.01568627, a: 1}
+    m_Value: {r: 0.6886792, g: 0.32853276, b: 0.07471521, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.419
+    m_Value: 0.375
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.594
+    m_Value: 1
   rounded:
     m_OverrideState: 1
     m_Value: 0
