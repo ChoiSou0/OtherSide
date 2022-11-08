@@ -9,6 +9,7 @@ using Jungmin;
 public class TitleManager : MonoBehaviour
 {
     [SerializeField] private Text pText;
+    private bool isOneTime = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,16 +24,17 @@ public class TitleManager : MonoBehaviour
 
     void PressKey()
     {
-        if (Input.anyKey)
+        if (Input.anyKey && !isOneTime)
         {
             StartCoroutine(StartGame());
+            isOneTime = true;
         }
     }
 
     IEnumerator StartGame()
     {
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene("RE_Stage1");
     }
 

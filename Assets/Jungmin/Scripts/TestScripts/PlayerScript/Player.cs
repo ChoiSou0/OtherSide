@@ -39,7 +39,7 @@ public class Player : Controller
         }
         else if (playerType == PlayerType.Basic && OtherPlayer.playerType == PlayerType.Basic)
         {
-            OtherPlayer.MovePlayerDecision += this.ShortPathThenOther;
+            MovePlayerDecision += this.ShortPathThenOther;
         }
     }
 
@@ -55,21 +55,21 @@ public class Player : Controller
         OtherPlayerFollowMe?.Invoke(pathList[pathList.Count - 2]);
     }
 
-    protected override void FollowPath()
+    protected override IEnumerator FollowPath()
     {
-        
-        if (MovePlayerDecision != null && !MovePlayerDecision(nodeCount))
+        if(MovePlayerDecision != null)
         {
-            return;
+            yield return new WaitUntil(() => OtherPlayer.isEndBuild);
+            if (!MovePlayerDecision(OtherPlayer.nodeCount)) yield break;
         }
-        base.FollowPath();
+
+        StartCoroutine(base.FollowPath());
+        yield break; 
     }
 
-    private bool ShortPathThenOther(int otherPathCount)
+    private bool ShortPathThenOther(int otherNodeCount)
     {
-        Debug.Log(gameObject.name + " " + nodeCount);
-        Debug.Log(gameObject.name + " " + otherPathCount);
-        if ((otherPathCount <= nodeCount || otherPathCount == 1) && otherPathCount != 0)
+        if (otherNodeCount <= nodeCount && otherNodeCount != 0)
         {
             return false;
         }

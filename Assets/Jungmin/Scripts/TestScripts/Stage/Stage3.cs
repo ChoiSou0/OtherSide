@@ -17,7 +17,7 @@ public class Stage3 : StageManager
     protected override void Update()
     {
         base.Update();
-        if (!isPortal) PortalCondition();
+        if (!isPortal && player1.currentNode != null) PortalCondition();
 
         if (player2.playerType == PlayerType.Follow && player1.currentNode == portal)
             player1.OtherPlayerFollowMe(player1.currentNode);
