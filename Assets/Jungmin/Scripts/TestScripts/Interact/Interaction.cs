@@ -14,12 +14,7 @@ public class Interaction : MonoBehaviour
     {
         get
         {
-            var angle = transform.eulerAngles;
-            angle.x = (angle.x > 180) ? angle.x - 360 : angle.x;
-            angle.y = (angle.y > 180) ? angle.y - 360 : angle.y;
-            angle.z = (angle.z > 180) ? angle.z - 360 : angle.z;
-
-            return angle;
+            return transform.eulerAngles; ;
         }
     }
 
@@ -43,7 +38,7 @@ public class Interaction : MonoBehaviour
         if (interactType == InteractType.Rotate)
             for (int i = 0; i < activeValues.Length; i++)
             {
-                if (interactionAngle == activeValues[i])
+                if (interactionAngle * Mathf.Deg2Rad == activeValues[i] * Mathf.Deg2Rad)
                 {
                     return true;
                 }

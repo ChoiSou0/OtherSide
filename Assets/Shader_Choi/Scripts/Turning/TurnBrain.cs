@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TurnBrain : MonoBehaviour
 {
-    public List<Turn_Info> TurnObject;
-    private bool isTurning;
+    [SerializeField] private List<Turn_Info> TurnObject;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +20,30 @@ public class TurnBrain : MonoBehaviour
 
     private void Turning()
     {
-        if (Input.GetMouseButtonDown(0) && !isTurning)
+        if (Input.GetMouseButtonDown(0))
         {
-            //isTurning = true;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit mouseHit;
 
-            for (int i = 0; i < TurnObject.Count; i++)
+            if (Physics.Raycast(ray, out mouseHit))
             {
-                TurnObject[i].Turn();                         
+                if (mouseHit.collider.gameObject == gameObject)
+                {
+                    for (int i = 0; i < TurnObject.Count; i++)
+                    {
+                        if (!TurnObject[i].isTurn)
+                        {
+                            TurnObject[i].Turn();
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
             }
+
+            
         }
     }
 

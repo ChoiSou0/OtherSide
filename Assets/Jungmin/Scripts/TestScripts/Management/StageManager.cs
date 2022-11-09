@@ -22,7 +22,7 @@ public abstract class StageManager : MonoBehaviour
             Vector3 checkValue = 
                 (interact.interactType == InteractType.Rotate) ? interact.interactionAngle : interact.interactionPosition;
 
-            if(condition.activeValue == checkValue)
+            if((condition.activeValue * Mathf.PI / 180f) == (checkValue * Mathf.PI / 180f))
             {
                 for (int i = 0; i < condition.nodes.Count; i++)
                 {

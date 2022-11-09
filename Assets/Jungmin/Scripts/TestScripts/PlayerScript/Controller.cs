@@ -14,9 +14,12 @@ public partial class Controller : MonoBehaviour
 
     protected List<Transform> openList = new List<Transform>();
     protected List<Transform> closedList = new List<Transform>();
+    protected int nodeCount = 0;
+    protected bool isEndBuild = false;
 
     private bool isWalking = false;
     private Sequence walk;
+
 
     protected virtual void Update()
     {
@@ -29,14 +32,13 @@ public partial class Controller : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (isWalking) StopWalking();
-
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit mouseHit;
 
             if (Physics.Raycast(ray, out mouseHit))
             {
                 targetNode = mouseHit.transform;               
+                StopWalking();
                 FindPathAndWalking();
             }
         }
@@ -66,11 +68,8 @@ public partial class Controller : MonoBehaviour
             ResetList();
         }
 
-        if (pathList.Count != 0 && !isWalking)
-        {
-            BuildPath(pathList);
-            FollowPath();
-        }
+        if (pathList.Count != 0) BuildPath(pathList);
+        else isEndBuild = true;
     }
 
     protected void ExplorePath(Node startNode)
@@ -98,11 +97,14 @@ public partial class Controller : MonoBehaviour
         foreach (Transform path in pathList)
         {
             var walkable = path.GetComponent<Walkable>();
+            nodeCount++;
             walkPathQueue.Enqueue(walkable);
         }
+        isEndBuild = true;
+        StartCoroutine(FollowPath());
     }
 
-    protected virtual void FollowPath()
+    protected virtual IEnumerator FollowPath()
     {
         walk = DOTween.Sequence();
         isWalking = true;
@@ -112,14 +114,16 @@ public partial class Controller : MonoBehaviour
             var path = walkPathQueue.Dequeue();
             if (path.transform == currentNode) continue;
 
+            transform.SetParent(path.transform);
             walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
 
             if (!path.donRotate)
                 walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
 
-            transform.SetParent(path.transform);
         }
-        walk.AppendCallback(() => isWalking = false);
+        walk.AppendCallback(() => StopWalking());
+
+        yield break;
     }
 
     private void RayCheckToCurrentNode()
@@ -145,9 +149,12 @@ public partial class Controller : MonoBehaviour
     protected void StopWalking()
     {
         isWalking = false;
+        isEndBuild = false;
+
         walk.Kill();
-        
         walkPathQueue.Clear();
+        nodeCount = 0;
+
         transform.parent = currentNode.transform; 
     }
 }

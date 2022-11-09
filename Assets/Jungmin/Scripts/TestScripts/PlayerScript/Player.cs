@@ -28,6 +28,7 @@ public class Player : Controller
     {
         base.Update();
     }
+
     private void CheckOtherPlayer()
     {
         if (OtherPlayer == null) return;
@@ -54,24 +55,25 @@ public class Player : Controller
         OtherPlayerFollowMe?.Invoke(pathList[pathList.Count - 2]);
     }
 
-    protected override void FollowPath()
+    protected override IEnumerator FollowPath()
     {
-        if (MovePlayerDecision != null)
+        if(MovePlayerDecision != null)
         {
-            if (!MovePlayerDecision(OtherPlayer.walkPathQueue.Count))
-            {
-                StopWalking();
-                return;
-            }
+            yield return new WaitUntil(() => OtherPlayer.isEndBuild);
+            if (!MovePlayerDecision(OtherPlayer.nodeCount)) yield break;
         }
-        base.FollowPath();
+
+        StartCoroutine(base.FollowPath());
+        yield break; 
     }
 
-    private bool ShortPathThenOther(int otherPathCount)
+    private bool ShortPathThenOther(int otherNodeCount)
     {
-        print(otherPathCount);
-        if (otherPathCount > this.walkPathQueue.Count || otherPathCount == 0) return true;
-        else return false;
+        if (otherNodeCount <= nodeCount && otherNodeCount != 0)
+        {
+            return false;
+        }
+        return true;
     }
     private void FollowOther(Transform target)
     {
