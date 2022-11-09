@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public partial class Controller1 
+public partial class Controller1
 {
     private Animator animator;
-    private void Awake() => animator = transform.GetChild(1).GetComponent<Animator>();
-    private void AnimationCheck()
+    protected virtual void Awake() => animator = transform.GetChild(1).GetComponent<Animator>();
+    protected void AnimationCheck()
     {
         animator.SetBool("isWalk", isWalking);
 
