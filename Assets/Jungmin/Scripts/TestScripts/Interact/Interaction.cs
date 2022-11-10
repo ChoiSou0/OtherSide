@@ -10,14 +10,7 @@ public enum InteractType
 
 public class Interaction : MonoBehaviour
 {
-    public Vector3 interactionAngle
-    {
-        get
-        {
-            return transform.eulerAngles; ;
-        }
-    }
-
+    public Vector3 interactionAngle => transform.eulerAngles;
     public Vector3 interactionPosition => transform.position;
 
     public Vector3[] activeValues;
@@ -38,7 +31,7 @@ public class Interaction : MonoBehaviour
         if (interactType == InteractType.Rotate)
             for (int i = 0; i < activeValues.Length; i++)
             {
-                if (interactionAngle * Mathf.Deg2Rad == activeValues[i] * Mathf.Deg2Rad)
+                if (interactionAngle == activeValues[i])
                 {
                     return true;
                 }

@@ -37,7 +37,7 @@ public partial class Controller : MonoBehaviour
 
             if (Physics.Raycast(ray, out mouseHit))
             {
-                targetNode = mouseHit.transform;               
+                targetNode = mouseHit.transform;
                 StopWalking();
                 FindPathAndWalking();
             }
@@ -114,12 +114,11 @@ public partial class Controller : MonoBehaviour
             var path = walkPathQueue.Dequeue();
             if (path.transform == currentNode) continue;
 
-            transform.SetParent(path.transform);
             walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
-
             if (!path.donRotate)
                 walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
 
+            transform.SetParent(path.transform);
         }
         walk.AppendCallback(() => StopWalking());
 

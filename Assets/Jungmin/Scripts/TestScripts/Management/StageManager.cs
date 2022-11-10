@@ -19,22 +19,17 @@ public abstract class StageManager : MonoBehaviour
             if (!condition.interactionObject.isInteract) continue;
 
             var interact = condition.interactionObject;
-            Vector3 checkValue = 
+
+            Vector3 checkVector = 
                 (interact.interactType == InteractType.Rotate) ? interact.interactionAngle : interact.interactionPosition;
 
-            if((condition.activeValue * Mathf.PI / 180f) == (checkValue * Mathf.PI / 180f))
+            if ((condition.activeValue == checkVector))
             {
                 for (int i = 0; i < condition.nodes.Count; i++)
                 {
                     var node = condition.nodes[i];
-                    if (node.isConnectNode)
-                    {
-                        node.walkable.neighborNode[node.index].isActive = true;
-                    }
-                    else
-                    {
-                        node.walkable.neighborNode[node.index].isActive = false;
-                    }
+                    if (node.isConnectNode) node.walkable.neighborNode[node.index].isActive = true;
+                    else node.walkable.neighborNode[node.index].isActive = false;
                 }
             }
         }

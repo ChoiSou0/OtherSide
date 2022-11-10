@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Event = ProductionEvent.Event;
 using Jungmin;
+using DG.Tweening;
 
 public class Stage3 : StageManager
 {
@@ -11,7 +12,7 @@ public class Stage3 : StageManager
 
     private void Start()
     {
-        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 18.6f, 18.59f), 180f));    
+        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 15.22f, 18.59f), 180f));    
     }
 
     protected override void Update()
@@ -19,8 +20,8 @@ public class Stage3 : StageManager
         base.Update();
         if (!isPortal && player1.currentNode != null) PortalCondition();
 
-        if (player2.playerType == PlayerType.Follow && player1.currentNode == portal)
-            player1.OtherPlayerFollowMe(player1.currentNode);
+        if (player2.playerType == PlayerType.Follow && player1.currentNode == portal && player2.currentNode != portal)
+            player1.OtherPlayerFollowMe(portal);
     }
 
     protected override void StageClear()
@@ -53,7 +54,7 @@ public class Stage3 : StageManager
     private IEnumerator PortalApeear()
     {
         StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
-        StartCoroutine(Event.ObjectAppearance(portal.gameObject, portal.transform.position + Vector3.up * 10.5f, 3f));
+        StartCoroutine(Event.ObjectAppearance(portal.gameObject, portal.transform.position + Vector3.up * 12f, 3f));
         yield return new WaitForSeconds(3);
 
         LayerChange(portal, 10);
@@ -62,9 +63,17 @@ public class Stage3 : StageManager
 
     private IEnumerator Stage3ClearEvent()
     {
-        yield return new WaitForSeconds(0.08f); 
+        yield return new WaitForSeconds(2f);
+        player1.gameObject.SetActive(false);
+        player2.gameObject.SetActive(false);
+        LayerChange(portal, 0);
+
+        StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
+        StartCoroutine(Event.ObjectAppearance(portal.gameObject, portal.transform.position + -Vector3.up * 20f, 5f));
+        yield return new WaitForSeconds(3f);
+
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
 
         //æ¿ ¿Ãµø
 
