@@ -63,7 +63,7 @@ public class Stage3 : StageManager
 
     private IEnumerator Stage3ClearEvent()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);
         LayerChange(portal, 0);
