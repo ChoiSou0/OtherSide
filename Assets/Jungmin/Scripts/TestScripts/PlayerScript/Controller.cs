@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
-using Jungmin;
 
 public partial class Controller : MonoBehaviour
 {
@@ -62,6 +61,7 @@ public partial class Controller : MonoBehaviour
             if (openList[openList.Count - 1] == targetNode && pathCount > openList.Count)
             {
                 var tempList = openList.ToList();
+
                 pathCount = tempList.Count;
                 pathList = tempList;
             }
@@ -77,20 +77,28 @@ public partial class Controller : MonoBehaviour
         Walkable path = startNode.nodePoint.GetComponent<Walkable>();
         closedList.Add(startNode.nodePoint);
 
-        foreach (Node node in path.neighborNode)
+        var temp = openList.ToList();
+        for (int i = 0; i < path.neighborNode.Count; i++)
         {
-            if (closedList.Contains(node.nodePoint) || !node.isActive)
+            if (openList[openList.Count - 1] != targetNode)
+            {
+                openList = temp;
+            }
+
+            if (closedList.Contains(path.neighborNode[i].nodePoint) || !path.neighborNode[i].isActive)
             {
                 continue;
             }
 
             if (targetNode != startNode.nodePoint)
             {
-                openList.Add(node.nodePoint);
-                ExplorePath(node);
+                openList.Add(path.neighborNode[i].nodePoint);
+                ExplorePath(path.neighborNode[i]);
             }
         }
     }
+
+
 
     protected virtual void BuildPath(List<Transform> pathList)
     {
@@ -112,12 +120,14 @@ public partial class Controller : MonoBehaviour
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();
+
             if (path.transform == currentNode) continue;
 
             if (path.tag == "Teleport")
             {
                 walk.Append(transform.DOMove(path.GetWalkPoint(), 0));
             }
+
             else
                 walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
 

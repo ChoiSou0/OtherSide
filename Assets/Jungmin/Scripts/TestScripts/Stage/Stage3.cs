@@ -20,8 +20,8 @@ public class Stage3 : StageManager
         base.Update();
         if (!isPortal && player1.currentNode != null) PortalCondition();
 
-        if (player2.playerType == PlayerType.Follow && player1.currentNode == portal && player2.currentNode != portal)
-            player1.OtherPlayerFollowMe(portal);
+        if (player2.playerType == PlayerType.Follow && player1.currentNode == portal[9] && player2.currentNode != portal[0])
+            player1.OtherPlayerFollowMe(portal[0]);
     }
 
     protected override void StageClear()
@@ -31,7 +31,7 @@ public class Stage3 : StageManager
 
     protected override void ClearCheck()
     {
-        if(player1.currentNode == portal && player2.currentNode == portal)
+        if(player1.currentNode == portal[0] && player2.currentNode == portal[0])
         {
             StageClear();
             isClearStage = true;
@@ -54,10 +54,10 @@ public class Stage3 : StageManager
     private IEnumerator PortalApeear()
     {
         StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
-        StartCoroutine(Event.ObjectAppearance(portal.gameObject, portal.transform.position + Vector3.up * 12f, 3f));
+        StartCoroutine(Event.ObjectAppearance(portal[0].gameObject, portal[0].transform.position + Vector3.up * 12f, 3f));
         yield return new WaitForSeconds(3);
 
-        LayerChange(portal, 10);
+        LayerChange(portal[0], 10);
         yield break;
     }
 
@@ -66,10 +66,10 @@ public class Stage3 : StageManager
         yield return new WaitForSeconds(1f);
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);
-        LayerChange(portal, 0);
+        LayerChange(portal[0], 0);
 
         StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
-        StartCoroutine(Event.ObjectAppearance(portal.gameObject, portal.transform.position + -Vector3.up * 20f, 5f));
+        StartCoroutine(Event.ObjectAppearance(portal[0].gameObject, portal[0].transform.position + -Vector3.up * 20f, 5f));
         yield return new WaitForSeconds(3f);
 
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));

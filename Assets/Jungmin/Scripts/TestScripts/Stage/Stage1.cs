@@ -8,11 +8,7 @@ public class Stage1 : StageManager
 {
     protected override void ClearCheck()
     {
-        if(player1.currentNode == portal)
-        {
-            StageClear();
-            isClearStage = true;
-        }
+        
     }
 
     protected override void StageClear()
@@ -26,8 +22,8 @@ public class Stage1 : StageManager
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 
-        nextSceneName = "RE_Stage3";
-        GameManager.Instance.LoadStage(nextSceneName);
+        //nextSceneName = "RE_Stage3";
+        //GameManager.Instance.LoadStage(nextSceneName);
 
         yield break;
     }

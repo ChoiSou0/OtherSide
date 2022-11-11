@@ -7,7 +7,7 @@ public abstract class StageManager : MonoBehaviour
     [HideInInspector] public bool isClearStage = false;
     [SerializeField] private List<PathCondition> pathConditions;
 
-    [SerializeField] protected Transform portal;
+    [SerializeField] protected Transform[] portal;
     [SerializeField] protected Player player1;
     [SerializeField] protected Player player2;
 
