@@ -99,7 +99,8 @@ namespace Cam_Control
         // ∆‰¿ÃµÂ æ∆øÙ
         public static IEnumerator FadeOut(Image Fade, float Time)
         {
-            Fade.DOColor(Color.black, Time).SetEase(Ease.InQuad);
+            Fade.DOColor(new Color(0, 0, 0, 0), 0);
+            Fade.DOColor(new Color(0, 0, 0, 1), Time).SetEase(Ease.InQuad);
 
             yield break;
         }

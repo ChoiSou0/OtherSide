@@ -114,7 +114,13 @@ public partial class Controller : MonoBehaviour
             var path = walkPathQueue.Dequeue();
             if (path.transform == currentNode) continue;
 
-            walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
+            if (path.tag == "Teleport")
+            {
+                walk.Append(transform.DOMove(path.GetWalkPoint(), 0));
+            }
+            else
+                walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
+
             if (!path.donRotate)
                 walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
 
