@@ -1,8 +1,8 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.Linq;
-using DG.Tweening;
+using UnityEngine;
 
 public partial class Controller : MonoBehaviour
 {
@@ -80,10 +80,7 @@ public partial class Controller : MonoBehaviour
         var temp = openList.ToList();
         for (int i = 0; i < path.neighborNode.Count; i++)
         {
-            if (openList[openList.Count - 1] != targetNode)
-            {
-                openList = temp;
-            }
+            if (openList[openList.Count - 1] != targetNode && path.neighborNode.Count >= 3) openList = temp.ToList();
 
             if (closedList.Contains(path.neighborNode[i].nodePoint) || !path.neighborNode[i].isActive)
             {
@@ -97,8 +94,6 @@ public partial class Controller : MonoBehaviour
             }
         }
     }
-
-
 
     protected virtual void BuildPath(List<Transform> pathList)
     {
@@ -170,6 +165,6 @@ public partial class Controller : MonoBehaviour
         walkPathQueue.Clear();
         nodeCount = 0;
 
-        transform.parent = currentNode.transform; 
+        transform.parent = currentNode.transform;
     }
 }
