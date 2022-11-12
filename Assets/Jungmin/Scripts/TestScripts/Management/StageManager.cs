@@ -8,8 +8,8 @@ public abstract class StageManager : MonoBehaviour
     [SerializeField] private List<PathCondition> pathConditions;
 
     [SerializeField] protected Transform[] portal;
-    [SerializeField] protected Player player1;
-    [SerializeField] protected Player player2;
+    [SerializeField] public Player player1;
+    [SerializeField] public Player player2;
 
     protected string nextSceneName;
     public void ConnectPathOfStage()

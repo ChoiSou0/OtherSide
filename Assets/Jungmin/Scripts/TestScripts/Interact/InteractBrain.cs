@@ -1,8 +1,9 @@
+using Jungmin;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+using GameManager = Jungmin.GameManager;
 
 public class InteractBrain : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class InteractBrain : MonoBehaviour
             {
                 if(Hit.collider.GetComponent<InteractBrain>() != null)
                 {
+                    GameManager.Instance.currentStage.player1.StopWalking();
+                    GameManager.Instance.currentStage.player2.StopWalking();
                     isActive = true;
                 }
             }

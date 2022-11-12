@@ -12,11 +12,21 @@ public class Stage1 : StageManager
     private void Start()
     {
         StartCoroutine(CloudMove(1));
+        StartCoroutine(Event.CameraMove(Camera.main, Camera.main.transform.position + Vector3.up * -6, 180f));
     }
 
     protected override void ClearCheck()
     {
-        
+        if (player1.currentNode == null) return;
+
+        var player1Check = player1.currentNode.GetComponent<Walkable>().type == WalkableType.ClearPortal;
+        var player2Check = player2.currentNode.GetComponent<Walkable>().type == WalkableType.ClearPortal;
+
+        if (player1Check && player2Check)
+        {
+            StageClear();
+            isClearStage = true;
+        }
     }
 
     protected override void StageClear()

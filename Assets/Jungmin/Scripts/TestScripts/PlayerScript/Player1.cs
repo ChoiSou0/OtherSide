@@ -15,7 +15,7 @@ public class Player1 : Controller1
     public System.Action<Transform> OtherPlayerFollowMe = null;
     public System.Func<int, bool> MovePlayerDecision = null;
 
-    public PlayerType playerType;
+    public PlayerMoveType playerType;
     [SerializeField] private Player1 OtherPlayer = null;
 
     protected override void Awake()
@@ -33,11 +33,11 @@ public class Player1 : Controller1
     {
         if (OtherPlayer == null) return;
 
-        if (playerType == PlayerType.Follow)
+        if (playerType == PlayerMoveType.Follow)
         {
             OtherPlayer.OtherPlayerFollowMe += this.FollowOther;
         }
-        else if (playerType == PlayerType.Basic && OtherPlayer.playerType == PlayerType.Basic)
+        else if (playerType == PlayerMoveType.Basic && OtherPlayer.playerType == PlayerMoveType.Basic)
         {
             MovePlayerDecision += this.ShortPathThenOther;
         }
@@ -45,7 +45,7 @@ public class Player1 : Controller1
 
     protected override void TouchScreen()
     {
-        if (playerType == PlayerType.Follow) return;
+        if (playerType == PlayerMoveType.Follow) return;
         base.TouchScreen();
     }
 
