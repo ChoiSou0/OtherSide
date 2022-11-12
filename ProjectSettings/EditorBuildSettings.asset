@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Jungmin/Scene/RE_Stage1.unity
     guid: 58b0115bf04f0554883f32942698836a
   - enabled: 1
-    path: Assets/Jungmin/Scene/RE_Stage3.unity
+    path: Assets/Scenes/RE_Stage3.unity
     guid: 7e3e302a3d40c3641a9ebec9b69598b8
   m_configObjects: {}
