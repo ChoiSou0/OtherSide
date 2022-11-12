@@ -5,27 +5,23 @@ using DG.Tweening;
 
 public class AppearObj : MonoBehaviour
 {
+    [SerializeField] private CameraShake cameraShake;
     [SerializeField] private List<Appear_Info> appear_Info;
     [SerializeField] private Controller p1;
     [SerializeField] private Controller p2;
-    private bool once;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraShake.Shake(Camera.main, 1, 0.01f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((p1.currentNode == this.gameObject.transform || p2.currentNode == this.gameObject.transform)
-            && !once)
+        if ((p1.currentNode == this.gameObject.transform || p2.currentNode == this.gameObject.transform))
         {
-            once = true;
-
-            Appear();
+            StartCoroutine(Appear());
         }
     }
 
@@ -35,12 +31,9 @@ public class AppearObj : MonoBehaviour
         {
             if (appear_Info[i].isShake)
             {
-
+                cameraShake.Shake(Camera.main, 1, 0.01f);
             }
-            else
-            {
 
-            }
 
             switch (appear_Info[i].appearVec)
             {

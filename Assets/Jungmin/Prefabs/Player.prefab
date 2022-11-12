@@ -79,9 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   targetNode: {fileID: 0}
-  openList: []
-  closedList: []
-  isActive: 0
+  playerType: 0
+  OtherPlayer: {fileID: 0}
 --- !u!1001 &2181930993405175016
 PrefabInstance:
   m_ObjectHideFlags: 0
