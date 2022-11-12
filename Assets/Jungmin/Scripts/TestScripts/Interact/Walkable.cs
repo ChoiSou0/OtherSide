@@ -9,10 +9,18 @@ public class Node
     public bool isActive = true;
 }
 
+public enum WalkableType
+{
+    Basic,
+    TelePort,
+    ClearPortal
+}
+
 public class Walkable : MonoBehaviour
 {
     readonly private float walkPointOffset = 0.5f;
 
+    public WalkableType type;
     public List<Node> neighborNode = new List<Node>();
     public bool isStair = false;
     public bool donRotate = false;

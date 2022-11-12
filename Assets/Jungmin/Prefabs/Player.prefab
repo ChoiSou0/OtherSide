@@ -79,9 +79,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   targetNode: {fileID: 0}
-  openList: []
-  closedList: []
-  isActive: 0
+  playerType: 0
+  OtherPlayer: {fileID: 0}
 --- !u!1001 &2181930993405175016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,7 +375,7 @@ Animator:
   m_GameObject: {fileID: 1334947288792537529}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 28c50dbdaf196a24580f63c53e228069, type: 2}
+  m_Controller: {fileID: 9100000, guid: 60d95a5fb43b31d4bacca98f1c832c93, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

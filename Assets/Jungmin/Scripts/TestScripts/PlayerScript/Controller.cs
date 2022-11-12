@@ -55,29 +55,30 @@ public partial class Controller : MonoBehaviour
             openList.Add(currentNode);
             closedList.Add(currentNode);
 
-            openList.Add(node.nodePoint);
-            ExplorePath(node);
+            if (targetNode != currentNode)
+                ExplorePath(node);
 
             if (openList[openList.Count - 1] == targetNode && pathCount > openList.Count)
             {
                 var tempList = openList.ToList();
-
                 pathCount = tempList.Count;
                 pathList = tempList;
             }
             ResetList();
         }
-
         if (pathList.Count != 0) BuildPath(pathList);
         else isEndBuild = true;
     }
 
     protected void ExplorePath(Node startNode)
     {
-        Walkable path = startNode.nodePoint.GetComponent<Walkable>();
+        openList.Add(startNode.nodePoint);
         closedList.Add(startNode.nodePoint);
+        if (startNode.nodePoint == targetNode) return;
 
+        var path = startNode.nodePoint.GetComponent<Walkable>();
         var temp = openList.ToList();
+
         for (int i = 0; i < path.neighborNode.Count; i++)
         {
             if (openList[openList.Count - 1] != targetNode && path.neighborNode.Count >= 3) openList = temp.ToList();
@@ -86,12 +87,7 @@ public partial class Controller : MonoBehaviour
             {
                 continue;
             }
-
-            if (targetNode != startNode.nodePoint)
-            {
-                openList.Add(path.neighborNode[i].nodePoint);
-                ExplorePath(path.neighborNode[i]);
-            }
+            ExplorePath(path.neighborNode[i]);
         }
     }
 
@@ -115,21 +111,42 @@ public partial class Controller : MonoBehaviour
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();
-
             if (path.transform == currentNode) continue;
 
-            if (path.tag == "Teleport")
+            Tween tween = path.type switch
             {
-                walk.Append(transform.DOMove(path.GetWalkPoint(), 0));
+                WalkableType.Basic => transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear),
+
+                WalkableType.TelePort => transform.DOMove(path.GetWalkPoint(), 0.25f)
+                .SetEase(Ease.Linear).OnComplete(() =>
+                transform.DOMove(path.neighborNode[0].nodePoint.GetComponent<Walkable>().GetWalkPoint(), 0f)),
+
+                WalkableType.ClearPortal =>
+                path.GetComponent<ClearPortal>()
+                .GetWalkPoint(transform, path.GetComponent<ClearPortal>().interactPlayer == transform.gameObject)
+            };
+
+            if (tween != null)
+                walk.Append(tween);
+
+            {
+                //if (path.tag == "Teleport")
+                //{
+                //    walk.Append(transform.DOMove(path.GetWalkPoint(), 0));
+                //}
+
+                //else
+                //    walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
             }
 
-            else
-                walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
+            #region È¸Àü
 
             if (!path.donRotate)
                 walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
 
             transform.SetParent(path.transform);
+
+            #endregion
         }
         walk.AppendCallback(() => StopWalking());
 
@@ -156,7 +173,7 @@ public partial class Controller : MonoBehaviour
         closedList.Clear();
     }
 
-    protected void StopWalking()
+    public void StopWalking()
     {
         isWalking = false;
         isEndBuild = false;
