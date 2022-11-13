@@ -12,6 +12,15 @@ EditorBuildSettings:
     path: Assets/Jungmin/Scene/RE_Stage1.unity
     guid: 58b0115bf04f0554883f32942698836a
   - enabled: 1
+    path: Assets/Scenes/Last_Stage2.unity
+    guid: 23bf71919b4d9c341805e97538775554
+  - enabled: 1
     path: Assets/Scenes/RE_Stage3.unity
     guid: 7e3e302a3d40c3641a9ebec9b69598b8
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Re_Stage4.unity
+    guid: 12c72b52eedbf0141b3d81e2a44f899e
+  - enabled: 1
+    path: Assets/Jungmin/Scene/Last_Stage5.unity
+    guid: a302b61e2aff029458143ff8838b7c7c
   m_configObjects: {}

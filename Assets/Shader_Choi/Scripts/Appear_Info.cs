@@ -11,7 +11,7 @@ public enum AppearVec
 public class Appear_Info : MonoBehaviour
 {
     public AppearVec appearVec;
-    public bool isShake;
+    public int Vec;
     public float Distance;
     public float Time;
 }

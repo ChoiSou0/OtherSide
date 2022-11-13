@@ -58,34 +58,6 @@ namespace Cam_Control
         //}
         #endregion
 
-        // 카메라 흔들기 (현재 카메라 위치, 진행시간, 흔드는 범위(0.01하면 평균))
-        #region
-        public void Shake(Camera Cam, float Duration, float ShakeRange)
-        {
-            shakeRange = ShakeRange;
-            cameraPos = Cam.transform.position;
-            InvokeRepeating("StartShake", 0f, 0.005f);
-            Invoke("StopShake", Duration);
-        }
-
-        private void StartShake()
-        {
-            float cameraPosX = Random.value * shakeRange * 2 - shakeRange;
-            float cameraPosY = Random.value * shakeRange * 2 - shakeRange;
-            Vector3 cameraPos = Camera.main.transform.position;
-            cameraPos.x += cameraPosX;
-            cameraPos.y += cameraPosY;
-            Camera.main.transform.position = cameraPos;
-        }
-
-        private void StopShake(Vector3 cameraPos)
-        {
-            CancelInvoke("StartShake");
-            Camera.main.transform.position = cameraPos;
-        }
-
-        #endregion
-
         // 페이드 인
         public static IEnumerator FadeIn(Image Fade, float Time)
         {
