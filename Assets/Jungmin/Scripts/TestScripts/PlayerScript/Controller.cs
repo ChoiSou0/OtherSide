@@ -19,7 +19,6 @@ public partial class Controller : MonoBehaviour
     private bool isWalking = false;
     private Sequence walk;
 
-
     protected virtual void Update()
     {
         RayCheckToCurrentNode();
@@ -56,7 +55,7 @@ public partial class Controller : MonoBehaviour
             closedList.Add(currentNode);
 
             if (targetNode != currentNode)
-                ExplorePath(node);
+                ExplorePath(node.nodePoint);
 
             if (openList[openList.Count - 1] == targetNode && pathCount > openList.Count)
             {
@@ -70,24 +69,23 @@ public partial class Controller : MonoBehaviour
         else isEndBuild = true;
     }
 
-    protected void ExplorePath(Node startNode)
+    protected void ExplorePath(Transform startNode)
     {
-        openList.Add(startNode.nodePoint);
-        closedList.Add(startNode.nodePoint);
-        if (startNode.nodePoint == targetNode) return;
+        openList.Add(startNode);
+        closedList.Add(startNode);
+        if (startNode == targetNode) return;
 
-        var path = startNode.nodePoint.GetComponent<Walkable>();
         var temp = openList.ToList();
-
-        for (int i = 0; i < path.neighborNode.Count; i++)
+        foreach (var path in startNode.GetComponent<Walkable>().neighborNode)
         {
-            if (openList[openList.Count - 1] != targetNode && path.neighborNode.Count >= 3) openList = temp.ToList();
+            if (openList[openList.Count - 1] != targetNode &&
+                startNode.GetComponent<Walkable>().neighborNode.Count >= 3) openList = temp.ToList();
 
-            if (closedList.Contains(path.neighborNode[i].nodePoint) || !path.neighborNode[i].isActive)
+            if (closedList.Contains(path.nodePoint) || !path.isActive)
             {
                 continue;
             }
-            ExplorePath(path.neighborNode[i]);
+            ExplorePath(path.nodePoint);
         }
     }
 
@@ -112,44 +110,33 @@ public partial class Controller : MonoBehaviour
         {
             var path = walkPathQueue.Dequeue();
             if (path.transform == currentNode) continue;
-
-            Tween tween = path.type switch
-            {
-                WalkableType.Basic => transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear),
-
-                WalkableType.TelePort => transform.DOMove(path.GetWalkPoint(), 0.25f)
-                .SetEase(Ease.Linear).OnComplete(() =>
-                transform.DOMove(path.neighborNode[0].nodePoint.GetComponent<Walkable>().GetWalkPoint(), 0f)),
-
-                WalkableType.ClearPortal =>
-                path.GetComponent<ClearPortal>()
-                .GetWalkPoint(transform, path.GetComponent<ClearPortal>().interactPlayer == transform.gameObject)
-            };
-
-            if (tween != null)
-                walk.Append(tween);
+            if (path.type == WalkableType.TelePort && targetNode != path.transform) StopWalking();
 
             {
-                //if (path.tag == "Teleport")
-                //{
-                //    walk.Append(transform.DOMove(path.GetWalkPoint(), 0));
-                //}
+                Tween tween = path.type switch
+                {
+                    WalkableType.Basic => transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear),
 
-                //else
-                //    walk.Append(transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear));
+                    WalkableType.TelePort =>
+                    path.GetComponent<TelePort>().GetTelePortAction(transform),
+
+                    WalkableType.ClearPortal =>
+                    path.GetComponent<ClearPortal>().GetWalkPointAction(transform)
+                };
+
+                if (tween != null)
+                    walk.Append(tween);
             }
-
             #region È¸Àü
 
             if (!path.donRotate)
                 walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
-
+        
             transform.SetParent(path.transform);
 
             #endregion
         }
         walk.AppendCallback(() => StopWalking());
-
         yield break;
     }
 

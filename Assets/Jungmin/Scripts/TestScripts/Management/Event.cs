@@ -87,7 +87,7 @@ namespace ProductionEvent
 
         public static IEnumerator ObjectAppearance(GameObject obj, Vector3 movePos, float time)
         {
-            obj.transform.DOMove(movePos, time).SetEase(Ease.OutQuad);
+            obj.transform.DOMove(movePos, time).SetEase(Ease.Linear);
             yield break;
         }
     }

@@ -288,6 +288,7 @@ MonoBehaviour:
   isStair: 0
   donRotate: 0
   interactPlayer: {fileID: 269982907}
+  portalType: 1
 --- !u!1 &91914055
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +412,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: a20231149e6fbc4409da2c296aacb76a, type: 2}
-  - {fileID: 2100000, guid: cda6924aaf3d97949a8c6fc1ccee3198, type: 2}
+  - {fileID: 2100000, guid: a20231149e6fbc4409da2c296aacb76a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3295,7 +3296,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: cda6924aaf3d97949a8c6fc1ccee3198, type: 2}
-  - {fileID: 2100000, guid: a20231149e6fbc4409da2c296aacb76a, type: 2}
+  - {fileID: 2100000, guid: cda6924aaf3d97949a8c6fc1ccee3198, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4452,6 +4453,7 @@ MonoBehaviour:
   isStair: 0
   donRotate: 0
   interactPlayer: {fileID: 200645247}
+  portalType: 1
 --- !u!1 &1270721711
 GameObject:
   m_ObjectHideFlags: 0
@@ -10594,7 +10596,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1511509011}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  donRotate: 1
 --- !u!65 &1623439925
 BoxCollider:
   m_ObjectHideFlags: 0

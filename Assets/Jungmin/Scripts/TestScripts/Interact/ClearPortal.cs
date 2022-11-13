@@ -3,14 +3,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PortalType
+{
+    Basic,
+    InteractPlayer
+}
+
 public class ClearPortal : Walkable
 {
+    public System.Func<Transform, Tween> GetWalkPointAction;
+
     public GameObject interactPlayer;
+    public PortalType portalType;
 
-    public Tween GetWalkPoint(Transform tr, bool check)
+    private void Awake()
     {
-        if (check) return tr.DOMove(GetWalkPoint(), 0.25f);
+        if (portalType == PortalType.InteractPlayer) GetWalkPointAction = GetWalkPointInteract;
+        else GetWalkPointAction = GetWalkPointBasic;
+    }
 
+    public Tween GetWalkPointInteract(Transform tr)
+    {
+        if (tr.gameObject == interactPlayer) return tr.DOMove(GetWalkPoint(), 0.25f);
         return null;
+    }
+
+    public Tween GetWalkPointBasic(Transform tr)
+    {
+        return tr.DOMove(GetWalkPoint(), 0.25f);
     }
 }
