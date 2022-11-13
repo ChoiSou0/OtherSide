@@ -58,7 +58,7 @@ public class Stage5 : StageManager
                 Tevent.isOneTime = true;
                 StartCoroutine(Event.ObjectAppearance
                     (Tevent.EventObject.gameObject, Tevent.EventObject.activeValues[0], Tevent.moveTime));
-                StartCoroutine(Event.CameraShake(Camera.main, 0.1f, Tevent.moveTime));
+                StartCoroutine(Event.CameraShake(Camera.main, 0.45f, Tevent.moveTime));
             }
         }
     }

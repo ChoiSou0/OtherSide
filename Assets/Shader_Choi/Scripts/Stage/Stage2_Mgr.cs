@@ -29,8 +29,8 @@ public class Stage2_Mgr : MonoBehaviour
 
     private IEnumerator End()
     {
-        StartCoroutine(Cam_Ctrl.FadeOut(GameObject.Find("FadeInOut").GetComponent<Image>(), 2));
-        yield return new WaitForSecondsRealtime(2);
+        StartCoroutine(Cam_Ctrl.FadeOut(GameObject.Find("FadeInOut").GetComponent<Image>(), 3));
+        yield return new WaitForSecondsRealtime(3);
         UnityEngine.SceneManagement.SceneManager.LoadScene("RE_Stage3");
 
         yield break;
