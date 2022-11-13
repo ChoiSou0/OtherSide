@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cam_Control;
 
+
 public class Stage4_Mgr : MonoBehaviour
 {
     [SerializeField] private CameraShake shake;
@@ -16,8 +17,7 @@ public class Stage4_Mgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Cam_Ctrl.FadeIn(GameObject.Find("FadeInOut").GetComponent<Image>(), 2));
-        StartCoroutine(Cam_Ctrl.Move(Camera.main.gameObject, new Vector3(-15.82f, 18.29f, 16.96f), 0.5f));
+        StartCoroutine(Cam_Ctrl.Move(Camera.main.gameObject, new Vector3(-15.82f, 18.29f, 16.96f), 2.5f));
     }
 
     // Update is called once per frame
@@ -27,6 +27,8 @@ public class Stage4_Mgr : MonoBehaviour
         {
             Ending = true;
 
+            p1.gameObject.SetActive(Ending);
+            p2.gameObject.SetActive(Ending);
             StartCoroutine(End());
         }
     }

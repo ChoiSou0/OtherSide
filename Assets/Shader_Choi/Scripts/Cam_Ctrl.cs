@@ -15,7 +15,7 @@ namespace Cam_Control
         // 카메라 이동
         public static IEnumerator Move(GameObject Cam ,Vector3 Pos, float Time)
         {
-            Cam.transform.DOMove(Pos, Time).SetEase(Ease.OutQuad);
+            Cam.transform.DOMove(Pos, Time).SetEase(Ease.OutQuint);
 
             yield break;
         }

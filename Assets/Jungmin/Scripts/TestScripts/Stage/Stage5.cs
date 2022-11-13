@@ -42,7 +42,8 @@ public class Stage5 : StageManager
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(1f);
 
-        //æ¿ ¿Ãµø
+        nextSceneName = "RE_Title";
+        GameManager.Instance.LoadStage(nextSceneName);
 
         yield break;
     }
@@ -52,11 +53,12 @@ public class Stage5 : StageManager
         for (int i = 0; i < telePortEvents.Count; i++)
         {
             var Tevent = telePortEvents[i];
-            if (Tevent.checking)
+            if (Tevent.checking && !Tevent.isOneTime)
             {
                 Tevent.isOneTime = true;
                 StartCoroutine(Event.ObjectAppearance
                     (Tevent.EventObject.gameObject, Tevent.EventObject.activeValues[0], Tevent.moveTime));
+                StartCoroutine(Event.CameraShake(Camera.main, 0.1f, Tevent.moveTime));
             }
         }
     }
@@ -74,7 +76,7 @@ public class Stage5 : StageManager
     }
 
     [System.Serializable]
-    public struct TelePortEvent
+    public class TelePortEvent
     {
         public Transform InteractTelePort;
         public Player InteractPlayer;

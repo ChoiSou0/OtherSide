@@ -13,7 +13,6 @@ public class Stage2_Mgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Cam_Ctrl.FadeIn(GameObject.Find("FadeInOut").GetComponent<Image>(), 2));
         StartCoroutine(Cam_Ctrl.Move(Camera.main.gameObject, 
             new Vector3(14, 21.73f, 13), 2));
     }

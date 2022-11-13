@@ -33,8 +33,8 @@ public class DesentObj : MonoBehaviour
 
     private IEnumerator Desent()
     {
-        this.gameObject.transform.DOMoveY(MaxY, 2f);
-        yield return new WaitForSecondsRealtime(2);
+        this.gameObject.transform.DOMoveY(MaxY, 3.5f);
+        yield return new WaitForSecondsRealtime(3.5f);
 
         for (int i = 0; i < Node.neighborNode.Count; i++)
         {
@@ -51,7 +51,7 @@ public class DesentObj : MonoBehaviour
             Node.neighborNode[i].isActive = false;
         }
 
-        this.gameObject.transform.DOMoveY(MinY , 2f);
+        this.gameObject.transform.DOMoveY(MinY , 3.5f);
 
         yield break;
     }

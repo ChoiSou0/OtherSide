@@ -118,13 +118,15 @@ public partial class Controller : MonoBehaviour
                     WalkableType.Basic => transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear),
 
                     WalkableType.TelePort =>
-                    path.GetComponent<TelePort>().GetTelePortAction(transform),
+                    path.GetComponent<TelePort>().GetTelePortAction(transform, StopWalking),
 
                     WalkableType.ClearPortal =>
                     path.GetComponent<ClearPortal>().GetWalkPointAction(transform)
                 };
-
-                if (tween != null)
+                         
+                if(walkPathQueue.Count == 0 && path.type != WalkableType.TelePort)
+                    walk.Append(tween).OnComplete(() => StopWalking());
+                else if(tween != null)
                     walk.Append(tween);
             }
             #region È¸Àü
@@ -136,7 +138,6 @@ public partial class Controller : MonoBehaviour
 
             #endregion
         }
-        walk.AppendCallback(() => StopWalking());
         yield break;
     }
 

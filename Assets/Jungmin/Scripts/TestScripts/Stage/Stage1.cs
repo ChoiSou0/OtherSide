@@ -40,8 +40,8 @@ public class Stage1 : StageManager
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 
-        //nextSceneName = "RE_Stage3";
-        //GameManager.Instance.LoadStage(nextSceneName);
+        nextSceneName = "Last_Stage2";
+        GameManager.Instance.LoadStage(nextSceneName);
 
         yield break;
     }
