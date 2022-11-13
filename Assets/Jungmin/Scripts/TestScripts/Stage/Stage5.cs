@@ -34,13 +34,14 @@ public class Stage5 : StageManager
     }
     private IEnumerator Stage5ClearEvent()
     {
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
         yield return new WaitForSeconds(1f);
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);
         LayerChange(portal[0], 0);
 
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
 
         nextSceneName = "RE_Title";
         GameManager.Instance.LoadStage(nextSceneName);
@@ -58,6 +59,8 @@ public class Stage5 : StageManager
                 Tevent.isOneTime = true;
                 StartCoroutine(Event.ObjectAppearance
                     (Tevent.EventObject.gameObject, Tevent.EventObject.activeValues[0], Tevent.moveTime));
+
+                SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, Tevent.moveTime);
                 StartCoroutine(Event.CameraShake(Camera.main, 0.45f, Tevent.moveTime));
             }
         }

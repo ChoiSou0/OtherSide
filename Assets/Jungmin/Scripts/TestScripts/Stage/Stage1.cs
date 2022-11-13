@@ -36,6 +36,7 @@ public class Stage1 : StageManager
 
     private IEnumerator Stage1ClearEvent()
     {
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
         yield return new WaitForSeconds(0.08f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);

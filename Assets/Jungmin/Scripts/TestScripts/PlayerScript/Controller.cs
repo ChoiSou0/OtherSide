@@ -105,7 +105,7 @@ public partial class Controller : MonoBehaviour
     {
         walk = DOTween.Sequence();
         isWalking = true;
-
+        
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();

@@ -44,12 +44,14 @@ public class TitleManager : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         isAlready = true;
+        SoundManager.Instance.PlayBGM();
     }
 
     IEnumerator StartGame()
     {
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3);
+        SoundManager.Instance.StopBGM();
         SceneManager.LoadScene("RE_Stage1");
     }
 

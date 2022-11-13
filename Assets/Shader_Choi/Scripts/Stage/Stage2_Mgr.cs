@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cam_Control;
+using Event = ProductionEvent.Event;
+using GameManager = Jungmin.GameManager;
 
 public class Stage2_Mgr : MonoBehaviour
 {
@@ -29,8 +31,10 @@ public class Stage2_Mgr : MonoBehaviour
 
     private IEnumerator End()
     {
-        StartCoroutine(Cam_Ctrl.FadeOut(GameObject.Find("FadeInOut").GetComponent<Image>(), 3));
-        yield return new WaitForSecondsRealtime(3);
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
+        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        yield return new WaitForSeconds(3f);
+
         UnityEngine.SceneManagement.SceneManager.LoadScene("RE_Stage3");
 
         yield break;

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Cam_Control;
+using Event = ProductionEvent.Event;
+using GameManager = Jungmin.GameManager;
 
 
 public class Stage4_Mgr : MonoBehaviour
@@ -17,7 +19,7 @@ public class Stage4_Mgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Cam_Ctrl.Move(Camera.main.gameObject, new Vector3(-15.82f, 18.29f, 16.96f), 2.5f));
+        StartCoroutine(Event.CameraMove(Camera.main, new(-15.82f, 18.29f, 16.96f), 150f));
     }
 
     // Update is called once per frame
@@ -35,8 +37,9 @@ public class Stage4_Mgr : MonoBehaviour
 
     private IEnumerator End()
     {
-        StartCoroutine(Cam_Ctrl.FadeOut(GameObject.Find("FadeInOut").GetComponent<Image>(), 3));
-        yield return new WaitForSecondsRealtime(3);
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
+        StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
+        yield return new WaitForSeconds(3f);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Last_Stage5");
 
         yield break;

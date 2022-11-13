@@ -11,6 +11,7 @@ public class AppearObj : MonoBehaviour
     [SerializeField] private Controller p1;
     [SerializeField] private Controller p2;
     private bool Shake;
+    private bool isSoundOneTime = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,9 @@ public class AppearObj : MonoBehaviour
     {
         if ((p1.currentNode == this.gameObject.transform || p2.currentNode == this.gameObject.transform))
         {
+            if(!isSoundOneTime) SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.7f, 1, 1.35f);
+            isSoundOneTime = true;
+
             StartCoroutine(Appear());
         }
         else
@@ -33,7 +37,6 @@ public class AppearObj : MonoBehaviour
 
     private IEnumerator Appear()
     {
-
         for (int i = 0; i < appear_Info.Count; i++)
         {
             if (Shake)
@@ -73,6 +76,7 @@ public class AppearObj : MonoBehaviour
     private IEnumerator Disappear()
     {
         Shake = false;
+        isSoundOneTime = false;
 
         for (int i = 0; i < appear_Info.Count; i++)
         {
