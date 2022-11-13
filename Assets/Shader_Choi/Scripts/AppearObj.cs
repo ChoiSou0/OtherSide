@@ -6,14 +6,16 @@ using DG.Tweening;
 public class AppearObj : MonoBehaviour
 {
     [SerializeField] private CameraShake cameraShake;
+    [SerializeField] private Walkable OnNode;
     [SerializeField] private List<Appear_Info> appear_Info;
     [SerializeField] private Controller p1;
     [SerializeField] private Controller p2;
+    private bool Shake;
 
     // Start is called before the first frame update
     void Start()
     {
-        cameraShake.Shake(Camera.main, 1, 0.01f);
+        
     }
 
     // Update is called once per frame
@@ -23,17 +25,29 @@ public class AppearObj : MonoBehaviour
         {
             StartCoroutine(Appear());
         }
+        else
+        {
+            StartCoroutine(Disappear());
+        }
     }
 
     private IEnumerator Appear()
     {
+
         for (int i = 0; i < appear_Info.Count; i++)
         {
-            if (appear_Info[i].isShake)
+            if (Shake)
             {
-                cameraShake.Shake(Camera.main, 1, 0.01f);
+                cameraShake.Shake();
             }
 
+            if (i == 0)
+            {
+                for (int j = 0; j < OnNode.neighborNode.Count; j++)
+                {
+                    OnNode.neighborNode[j].isActive = true;
+                }
+            }
 
             switch (appear_Info[i].appearVec)
             {
@@ -50,10 +64,36 @@ public class AppearObj : MonoBehaviour
                     break;
             }
 
-            yield return new WaitForSecondsRealtime(0.3f);
+            yield return new WaitForSecondsRealtime(0.1f);
         }
 
         yield break;
     }
     
+    private IEnumerator Disappear()
+    {
+        Shake = false;
+
+        for (int i = 0; i < appear_Info.Count; i++)
+        {
+            switch (appear_Info[i].appearVec)
+            {
+                case AppearVec.X:
+                    appear_Info[i].gameObject.transform.DOMoveX(appear_Info[i].Distance - 1.5f * appear_Info[i].Vec, appear_Info[i].Time).SetEase(Ease.OutQuint);
+                    break;
+
+                case AppearVec.Y:
+                    appear_Info[i].gameObject.transform.DOMoveY(appear_Info[i].Distance - 1.5f * appear_Info[i].Vec, appear_Info[i].Time).SetEase(Ease.OutQuint);
+                    break;
+
+                case AppearVec.Z:
+                    appear_Info[i].gameObject.transform.DOMoveZ(appear_Info[i].Distance - 1.5f * appear_Info[i].Vec, appear_Info[i].Time).SetEase(Ease.OutQuint);
+                    break;
+            }
+
+            yield return new WaitForSecondsRealtime(0.1f);
+        }
+
+        yield break;
+    }
 }
