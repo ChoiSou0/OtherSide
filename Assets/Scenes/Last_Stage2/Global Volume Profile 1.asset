@@ -86,7 +86,7 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 2.5
+    m_Value: 2
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -141,10 +141,10 @@ MonoBehaviour:
           inWeight: 0
           outWeight: 0
         - serializedVersion: 3
-          time: 0.4091218
-          value: 0.50294113
-          inSlope: 0.9121244
-          outSlope: 0.9121244
+          time: 0.39944133
+          value: 0.47337276
+          inSlope: 2.8886497
+          outSlope: 2.8886497
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
