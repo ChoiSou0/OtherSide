@@ -23,8 +23,10 @@ public class InteractBrain : MonoBehaviour
             {
                 if(Hit.collider.GetComponent<InteractBrain>() != null)
                 {
-                    GameManager.Instance.currentStage.player1.StopWalking();
-                    GameManager.Instance.currentStage.player2.StopWalking();
+                    var currentStage = GameManager.Instance.currentStage;
+                    if (currentStage.player1.isWalking) currentStage.player1.StopWalking();
+                    if (currentStage.player2.isWalking) currentStage.player2.StopWalking();
+
                     isActive = true;
                 }
             }

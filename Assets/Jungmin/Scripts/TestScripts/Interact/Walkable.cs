@@ -23,7 +23,7 @@ public class Walkable : MonoBehaviour
     public WalkableType type;
     public List<Node> neighborNode = new List<Node>();
     public bool isStair = false;
-    public bool donRotate = false;
+    public Vector3 rotateDirection = Vector3.zero;
 
     public Vector3 GetWalkPoint()
     {

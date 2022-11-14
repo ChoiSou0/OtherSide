@@ -287,7 +287,7 @@ MonoBehaviour:
   type: 2
   neighborNode: []
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
   interactPlayer: {fileID: 269982907}
   portalType: 1
 --- !u!1 &91914055
@@ -596,7 +596,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1467739423}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &150914660
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 714992746}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &216261956
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -912,7 +912,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 737821050}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &222757260
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1035,7 +1035,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95c4947fe13353a4fbac00cb5c838e89, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 721954650}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &254715731
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1334,7 +1334,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1399726540}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &326801688
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1540,7 +1540,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95c4947fe13353a4fbac00cb5c838e89, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1703,7 +1703,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 326801686}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &381000564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1897,7 +1897,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1059078877}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &501369997
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2895,7 +2895,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1138283090}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &687867807
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3013,7 +3013,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 150914658}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &714992748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3131,7 +3131,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 222757258}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &721954652
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3249,7 +3249,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1811541888}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &737821052
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3541,7 +3541,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f1ec4eb7a3b0bf4286514ea1fd99c5e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3620,7 +3620,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1388421996}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &911377024
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3942,7 +3942,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f1ec4eb7a3b0bf4286514ea1fd99c5e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4041,7 +4041,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95c4947fe13353a4fbac00cb5c838e89, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4105,7 +4105,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 381000562}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1059078879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4343,7 +4343,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 687867805}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1138283092
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4520,7 +4520,7 @@ MonoBehaviour:
   type: 2
   neighborNode: []
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
   interactPlayer: {fileID: 200645247}
   portalType: 1
 --- !u!1 &1270721711
@@ -4577,7 +4577,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 911377022}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1270721714
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4864,7 +4864,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1565012565}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1388421998
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4982,7 +4982,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 687867805}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1399726542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5198,7 +5198,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1270721712}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1467739425
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10139,7 +10139,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1990647366}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1511509013
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10257,7 +10257,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1623439923}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1565012567
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10580,7 +10580,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1511509011}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1623439925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10935,7 +10935,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1159495351}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1811541890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11058,7 +11058,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95c4947fe13353a4fbac00cb5c838e89, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11221,7 +11221,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1511509011}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1990647368
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11356,7 +11356,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 95c4947fe13353a4fbac00cb5c838e89, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.12941177}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

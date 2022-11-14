@@ -16,7 +16,7 @@ public partial class Controller : MonoBehaviour
     protected int nodeCount = 0;
     protected bool isEndBuild = false;
 
-    private bool isWalking = false;
+    public bool isWalking = false;
     private Sequence walk;
 
     protected virtual void Update()
@@ -36,7 +36,8 @@ public partial class Controller : MonoBehaviour
             if (Physics.Raycast(ray, out mouseHit))
             {
                 targetNode = mouseHit.transform;
-                StopWalking();
+                if(isWalking)
+                    StopWalking();
                 FindPathAndWalking();
             }
         }
@@ -91,6 +92,8 @@ public partial class Controller : MonoBehaviour
 
     protected virtual void BuildPath(List<Transform> pathList)
     {
+        Debug.Log(pathList[pathList.Count - 1]);
+
         foreach (Transform path in pathList)
         {
             var walkable = path.GetComponent<Walkable>();
@@ -99,19 +102,31 @@ public partial class Controller : MonoBehaviour
         }
         isEndBuild = true;
         StartCoroutine(FollowPath());
+
+
     }
 
     protected virtual IEnumerator FollowPath()
     {
         walk = DOTween.Sequence();
         isWalking = true;
-        
+
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();
             if (path.transform == currentNode) continue;
             if (path.type == WalkableType.TelePort && targetNode != path.transform) StopWalking();
 
+            #region 회전
+
+            if (path.rotateDirection != Vector3.zero)
+                walk.Join
+                    (transform.DOLookAt
+                    (transform.position + path.rotateDirection, .1f, AxisConstraint.Y, Vector3.up));
+            else
+                walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
+
+            #endregion
             {
                 Tween tween = path.type switch
                 {
@@ -123,20 +138,14 @@ public partial class Controller : MonoBehaviour
                     WalkableType.ClearPortal =>
                     path.GetComponent<ClearPortal>().GetWalkPointAction(transform)
                 };
-                         
-                if(walkPathQueue.Count == 0 && path.type != WalkableType.TelePort)
+
+                if (walkPathQueue.Count == 0 && path.type != WalkableType.TelePort)
                     walk.Append(tween).OnComplete(() => StopWalking());
-                else if(tween != null)
+                else if (tween != null)
                     walk.Append(tween);
             }
-            #region 회전
 
-            if (!path.donRotate)
-                walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
-        
             transform.SetParent(path.transform);
-
-            #endregion
         }
         yield break;
     }
@@ -163,6 +172,8 @@ public partial class Controller : MonoBehaviour
 
     public void StopWalking()
     {
+        Debug.Log(gameObject.name + "stop");
+
         isWalking = false;
         isEndBuild = false;
 
