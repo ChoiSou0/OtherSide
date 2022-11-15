@@ -36,8 +36,10 @@ public partial class Controller : MonoBehaviour
             if (Physics.Raycast(ray, out mouseHit))
             {
                 targetNode = mouseHit.transform;
+
                 if(isWalking)
                     StopWalking();
+
                 FindPathAndWalking();
             }
         }
@@ -114,19 +116,13 @@ public partial class Controller : MonoBehaviour
         for (; walkPathQueue.Count > 0;)
         {
             var path = walkPathQueue.Dequeue();
-            if (path.transform == currentNode) continue;
+            if (path.transform == currentNode)
+            {
+                if (walkPathQueue.Count == 0) StopWalking();
+                continue;
+            }
             if (path.type == WalkableType.TelePort && targetNode != path.transform) StopWalking();
 
-            #region 회전
-
-            if (path.rotateDirection != Vector3.zero)
-                walk.Join
-                    (transform.DOLookAt
-                    (transform.position + path.rotateDirection, .1f, AxisConstraint.Y, Vector3.up));
-            else
-                walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
-
-            #endregion
             {
                 Tween tween = path.type switch
                 {
@@ -144,6 +140,11 @@ public partial class Controller : MonoBehaviour
                 else if (tween != null)
                     walk.Append(tween);
             }
+            #region 회전
+
+                walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
+
+            #endregion
 
             transform.SetParent(path.transform);
         }

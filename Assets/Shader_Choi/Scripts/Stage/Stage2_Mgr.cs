@@ -31,7 +31,7 @@ public class Stage2_Mgr : MonoBehaviour
 
     private IEnumerator End()
     {
-        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));
         yield return new WaitForSeconds(3f);
 

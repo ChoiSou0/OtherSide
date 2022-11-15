@@ -67,7 +67,7 @@ public class Stage3 : StageManager
 
     private IEnumerator Stage3ClearEvent()
     {
-        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(1f);
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);
@@ -75,7 +75,7 @@ public class Stage3 : StageManager
 
         StartCoroutine(Event.CameraShake(Camera.main, 0.5f, 3));
         StartCoroutine(Event.ObjectAppearance(portal[0].gameObject, portal[0].transform.position + -Vector3.up * 20f, 5f));
-        SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, 3);
+        SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, 3.5f);
         yield return new WaitForSeconds(3f);
 
         StartCoroutine(Event.FadeIn(GameManager.Instance.fadeImage));

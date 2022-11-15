@@ -52,12 +52,14 @@ public class Player : Controller
     protected override void BuildPath(List<Transform> pathList)
     {
         base.BuildPath(pathList);
-        OtherPlayerFollowMe?.Invoke(pathList[pathList.Count - 2]);
+
+        if (pathList.Count != 1)
+            OtherPlayerFollowMe?.Invoke(pathList[pathList.Count - 2]);
     }
 
     protected override IEnumerator FollowPath()
     {
-        if(MovePlayerDecision != null)
+        if (MovePlayerDecision != null)
         {
             yield return new WaitUntil(() => OtherPlayer.isEndBuild);
             if (!MovePlayerDecision(OtherPlayer.nodeCount)) yield break;
@@ -67,7 +69,7 @@ public class Player : Controller
             SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
 
         StartCoroutine(base.FollowPath());
-        yield break; 
+        yield break;
     }
 
     private bool ShortPathThenOther(int otherNodeCount)

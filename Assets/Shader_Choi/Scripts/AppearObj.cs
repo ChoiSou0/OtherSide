@@ -24,7 +24,7 @@ public class AppearObj : MonoBehaviour
     {
         if ((p1.currentNode == this.gameObject.transform || p2.currentNode == this.gameObject.transform))
         {
-            if(!isSoundOneTime) SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.7f, 1, 1.35f);
+            if(!isSoundOneTime) SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.7f, 1, 1.5f);
             isSoundOneTime = true;
 
             StartCoroutine(Appear());

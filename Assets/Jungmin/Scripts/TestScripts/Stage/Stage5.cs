@@ -34,7 +34,7 @@ public class Stage5 : StageManager
     }
     private IEnumerator Stage5ClearEvent()
     {
-        SoundManager.Instance.PlaySFX(SoundEffect.GameClear);
+        SoundManager.Instance.PlaySFX(SoundEffect.GameClear, 0.6f);
         yield return new WaitForSeconds(1f);
         player1.gameObject.SetActive(false);
         player2.gameObject.SetActive(false);
