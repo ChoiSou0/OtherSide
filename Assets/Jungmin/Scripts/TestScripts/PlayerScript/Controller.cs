@@ -153,6 +153,7 @@ public partial class Controller : MonoBehaviour
                     walk.Append(tween).OnComplete(() => StopWalking());
                 else if (tween != null)
                     walk.Append(tween);
+                transform.SetParent(path.transform);
             }
             #region È¸Àü
 
@@ -160,7 +161,6 @@ public partial class Controller : MonoBehaviour
 
             #endregion
 
-            transform.SetParent(path.transform);
         }
         yield break;
     }
