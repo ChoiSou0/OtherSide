@@ -40,7 +40,7 @@ public class DesentObj : MonoBehaviour
         {
             Node.neighborNode[i].isActive = true;
         }
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(1f);
 
         this.gameObject.transform.DOMoveY(MaxY, 3.5f);
         yield return new WaitForSecondsRealtime(3.5f);
