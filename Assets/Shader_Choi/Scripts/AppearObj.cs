@@ -44,7 +44,7 @@ public class AppearObj : MonoBehaviour
                 cameraShake.Shake();
             }
 
-            if (i == 0)
+            if (i == appear_Info.Count - 1)
             {
                 for (int j = 0; j < OnNode.neighborNode.Count; j++)
                 {

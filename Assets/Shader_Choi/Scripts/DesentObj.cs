@@ -33,6 +33,7 @@ public class DesentObj : MonoBehaviour
 
     private IEnumerator Desent()
     {
+        yield return new WaitForSecondsRealtime(0.5f);
         this.gameObject.transform.DOMoveY(MaxY, 3.5f);
         yield return new WaitForSecondsRealtime(3.5f);
 
