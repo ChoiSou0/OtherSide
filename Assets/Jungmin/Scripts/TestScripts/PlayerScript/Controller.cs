@@ -13,6 +13,7 @@ public partial class Controller : MonoBehaviour
 
     protected List<Transform> openList = new List<Transform>();
     protected List<Transform> closedList = new List<Transform>();
+    protected List<Transform> CheckList = new List<Transform>();
     protected int nodeCount = 0;
     protected bool isEndBuild = false;
 
@@ -36,7 +37,7 @@ public partial class Controller : MonoBehaviour
             if (Physics.Raycast(ray, out mouseHit))
             {
                 if (mouseHit.transform == targetNode) return;
-                if(isWalking) StopWalking();
+                if (isWalking) StopWalking();
 
                 targetNode = mouseHit.transform;
                 FindPathAndWalking();
@@ -53,13 +54,14 @@ public partial class Controller : MonoBehaviour
         {
             if (!node.isActive) continue;
 
-            openList.Add(currentNode);
+            CheckList.Add(currentNode);
             closedList.Add(currentNode);
 
             if (targetNode != currentNode)
                 ExplorePath(node.nodePoint);
 
-            if (openList[openList.Count - 1] == targetNode && pathCount > openList.Count)
+            if (openList.Count != 0 && openList[openList.Count - 1] == targetNode
+                && pathCount > openList.Count)
             {
                 var tempList = openList.ToList();
                 pathCount = tempList.Count;
@@ -73,21 +75,28 @@ public partial class Controller : MonoBehaviour
 
     protected void ExplorePath(Transform startNode)
     {
-        openList.Add(startNode);
+        CheckList.Add(startNode);
         closedList.Add(startNode);
         if (startNode == targetNode) return;
 
-        var temp = openList.ToList();
+        var temp = CheckList.ToList();
         foreach (var path in startNode.GetComponent<Walkable>().neighborNode)
         {
-            if (openList[openList.Count - 1] != targetNode &&
-                startNode.GetComponent<Walkable>().neighborNode.Count >= 3) openList = temp.ToList();
+            //if (openList[openList.Count - 1] != targetNode &&
+            //    startNode.GetComponent<Walkable>().neighborNode.Count >= 3) openList = temp.ToList();
 
             if (closedList.Contains(path.nodePoint) || !path.isActive)
             {
                 continue;
             }
             ExplorePath(path.nodePoint);
+
+            if (CheckList[CheckList.Count - 1] == targetNode
+                && (CheckList.Count < openList.Count || openList.Count == 0))
+            {
+                openList = CheckList.ToList();
+            }
+            CheckList = temp.ToList();
         }
     }
 
@@ -137,7 +146,7 @@ public partial class Controller : MonoBehaviour
             }
             #region È¸Àü
 
-                walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
+            walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
 
             #endregion
 
@@ -164,6 +173,7 @@ public partial class Controller : MonoBehaviour
     {
         openList.Clear();
         closedList.Clear();
+        CheckList.Clear();
     }
 
     public void StopWalking()

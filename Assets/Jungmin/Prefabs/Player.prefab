@@ -79,8 +79,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentNode: {fileID: 0}
   targetNode: {fileID: 0}
+  isWalking: 0
   playerType: 0
   OtherPlayer: {fileID: 0}
+  touchPoint: {fileID: 271197809274399845, guid: f19a5bc0d89918b45b580a4db922924b,
+    type: 3}
 --- !u!1001 &2181930993405175016
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class Player : Controller
 
     public PlayerMoveType playerType;
     [SerializeField] private Player OtherPlayer = null;
+    [SerializeField] GameObject touchPoint;
 
     protected override void Awake()
     {
@@ -68,10 +69,19 @@ public class Player : Controller
         //if (playerType != PlayerMoveType.Follow)
             //SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
 
+        TouchPointEffect(targetNode);
         StartCoroutine(base.FollowPath());
         yield break;
     }
 
+    private void TouchPointEffect(Transform target)
+    {
+        var pos = target.GetComponent<Walkable>().GetWalkPoint();
+        var effectPos = new Vector3(pos.x + 0.15f, pos.y + 0.15f, pos.z + 0.15f);
+
+        var effect = Instantiate(touchPoint, effectPos, Quaternion.identity);
+        Destroy(effect.gameObject, 2f);
+    }
     private bool ShortPathThenOther(int otherNodeCount)
     {
         if (otherNodeCount <= nodeCount && otherNodeCount != 0)

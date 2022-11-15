@@ -177,7 +177,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1527601392}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &41995588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -243,7 +243,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1055955236}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &56849869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -309,7 +309,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1211927761}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &138418863
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 557340065}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &245174149
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -441,7 +441,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 874359088}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &258318292
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5426,7 +5426,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1738095461}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &322150282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5682,7 +5682,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 41995586}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &557340067
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6190,7 +6190,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 245174147}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &874359090
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6256,7 +6256,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 258318290}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &897794355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6426,7 +6426,7 @@ MonoBehaviour:
   type: 1
   neighborNode: []
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
   interactPlayer: {fileID: 0}
   portalType: 0
   linkedNode: {fileID: 1337896025}
@@ -6714,7 +6714,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1585211992}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1032498454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8253,7 +8253,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1994019408}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1055955238
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8550,7 +8550,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 322150280}
     isActive: 0
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1101725702
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8616,7 +8616,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 897794353}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1139751607
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8682,7 +8682,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1925135734}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1211927763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8914,7 +8914,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1638298152}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1297104212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8989,7 +8989,7 @@ MonoBehaviour:
   type: 1
   neighborNode: []
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
   interactPlayer: {fileID: 0}
   portalType: 0
   linkedNode: {fileID: 962610282}
@@ -9046,7 +9046,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 138418861}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1349090869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9139,7 +9139,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365197592}
   m_LocalRotation: {x: 0.11591566, y: -0.88047725, z: 0.27984518, w: 0.3647056}
-  m_LocalPosition: {x: 15.29, y: 24.24, z: 14.29}
+  m_LocalPosition: {x: 20.46, y: 29.36, z: 19.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9693,7 +9693,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1297104210}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1448296778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9829,7 +9829,7 @@ MonoBehaviour:
   type: 1
   neighborNode: []
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
   interactPlayer: {fileID: 0}
   portalType: 0
   linkedNode: {fileID: 1585211995}
@@ -9886,7 +9886,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1032498452}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1527601394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10050,7 +10050,7 @@ MonoBehaviour:
   type: 1
   neighborNode: []
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
   interactPlayer: {fileID: 0}
   portalType: 0
   linkedNode: {fileID: 1511149088}
@@ -10107,7 +10107,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1337896022}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1632827651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10171,7 +10171,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1297104210}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1638298154
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10463,7 +10463,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 2006987038}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1738095463
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10724,7 +10724,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1511149085}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1810481044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10790,7 +10790,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1632827649}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1855102197
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10856,7 +10856,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1448296776}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1925135736
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11037,7 +11037,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1349090867}
     isActive: 1
   isStair: 0
-  donRotate: 1
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1994019410
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11103,7 +11103,7 @@ MonoBehaviour:
   - nodePoint: {fileID: 1855102195}
     isActive: 1
   isStair: 0
-  donRotate: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &2006987040
 BoxCollider:
   m_ObjectHideFlags: 0
