@@ -941,7 +941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 80946653}
   - component: {fileID: 80946655}
-  - component: {fileID: 80946654}
+  - component: {fileID: 80946656}
   m_Layer: 0
   m_Name: GameObject (123)
   m_TagString: Untagged
@@ -964,24 +964,6 @@ Transform:
   m_Father: {fileID: 68485272}
   m_RootOrder: 79
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &80946654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80946652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d22947322e8db488871f0bf230dcca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  neighborNode:
-  - nodePoint: {fileID: 486518809}
-    isActive: 0
-  isStair: 0
-  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &80946655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -995,6 +977,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.4291697, y: 0.8951343, z: 2.541006}
   m_Center: {x: -0.21458483, y: -0.052432954, z: -0.2862358}
+--- !u!114 &80946656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 80946652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e286938f6f96a245b5a9397a3a10a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  neighborNode:
+  - nodePoint: {fileID: 486518809}
+    isActive: 0
+  isStair: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
+  interactPlayer: {fileID: 1080080757}
+  portalType: 1
 --- !u!1 &90775291
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,7 +3167,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 453848521}
   m_LocalRotation: {x: -0.115915604, y: -0.88047725, z: 0.27984518, w: -0.3647054}
-  m_LocalPosition: {x: -24.07, y: 34.6, z: 26.33}
+  m_LocalPosition: {x: -15.82, y: 34.6, z: 16.96002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8591,12 +8593,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ecb9cf6fad35a4b86fc14e8e699184, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stage4_Mgr: {fileID: 805233665}
   p1: {fileID: 2181930994140572988}
   p2: {fileID: 1080080758}
   PlayNode: {fileID: 4829594}
   Node: {fileID: 4829595}
   MinY: 15.95
   MaxY: -4.450004
+  playNeighborNode:
+  - {fileID: 1174589364}
+  - {fileID: 1855827648}
+  playNeighborindex: 0000000002000000
 --- !u!1 &1254126891
 GameObject:
   m_ObjectHideFlags: 0
@@ -10254,7 +10261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582294701}
   - component: {fileID: 1582294703}
-  - component: {fileID: 1582294702}
+  - component: {fileID: 1582294704}
   m_Layer: 0
   m_Name: GameObject (124)
   m_TagString: Untagged
@@ -10277,24 +10284,6 @@ Transform:
   m_Father: {fileID: 68485272}
   m_RootOrder: 80
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1582294702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582294700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54d22947322e8db488871f0bf230dcca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  neighborNode:
-  - nodePoint: {fileID: 1423628760}
-    isActive: 0
-  isStair: 0
-  rotateDirection: {x: 0, y: 0, z: 0}
 --- !u!65 &1582294703
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10308,6 +10297,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5912962, y: 0.931913, z: 1.4207983}
   m_Center: {x: 0.109530926, y: -0.034042895, z: 0.21039915}
+--- !u!114 &1582294704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582294700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e286938f6f96a245b5a9397a3a10a03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
+  neighborNode:
+  - nodePoint: {fileID: 1423628760}
+    isActive: 0
+  isStair: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
+  interactPlayer: {fileID: 2181930994140572990}
+  portalType: 1
 --- !u!1 &1583748005
 GameObject:
   m_ObjectHideFlags: 0
@@ -18391,8 +18400,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf866a8a24af4664c91eb8863194e4dd, type: 2}
-  - {fileID: 2100000, guid: 8e92fe59c82860f4a886dc9250131223, type: 2}
+  - {fileID: 2100000, guid: 3830524d438d90943809c04ba306545f, type: 2}
+  - {fileID: 2100000, guid: 3830524d438d90943809c04ba306545f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -20685,8 +20694,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf866a8a24af4664c91eb8863194e4dd, type: 2}
-  - {fileID: 2100000, guid: 8e92fe59c82860f4a886dc9250131223, type: 2}
+  - {fileID: 2100000, guid: 68fecec3f66608a41bdcf898ab17cbcc, type: 2}
+  - {fileID: 2100000, guid: 68fecec3f66608a41bdcf898ab17cbcc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

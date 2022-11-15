@@ -6,6 +6,7 @@ using UnityEngine;
 
 public partial class Controller : MonoBehaviour
 {
+    private const float CLICK_TIME = 0.5f;
     public Transform currentNode;
     public Transform targetNode;
 
@@ -16,6 +17,8 @@ public partial class Controller : MonoBehaviour
     protected List<Transform> CheckList = new List<Transform>();
     protected int nodeCount = 0;
     protected bool isEndBuild = false;
+    protected float curTime = 0;
+    protected float waitTime = 0;
 
     public bool isWalking = false;
     private Sequence walk;
@@ -29,8 +32,12 @@ public partial class Controller : MonoBehaviour
 
     protected virtual void TouchScreen()
     {
-        if (Input.GetMouseButtonDown(0))
+        curTime = Time.time;
+        if (Input.GetMouseButtonDown(0) && curTime >= waitTime)
         {
+            waitTime = Time.time + CLICK_TIME;
+            curTime = 0;
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit mouseHit;
 
@@ -40,7 +47,7 @@ public partial class Controller : MonoBehaviour
                 if (isWalking) StopWalking();
 
                 targetNode = mouseHit.transform;
-                FindPathAndWalking();
+                if(targetNode != currentNode) FindPathAndWalking();
             }
         }
     }
@@ -57,8 +64,7 @@ public partial class Controller : MonoBehaviour
             CheckList.Add(currentNode);
             closedList.Add(currentNode);
 
-            if (targetNode != currentNode)
-                ExplorePath(node.nodePoint);
+            ExplorePath(node.nodePoint);
 
             if (openList.Count != 0 && openList[openList.Count - 1] == targetNode
                 && pathCount > openList.Count)
@@ -77,7 +83,11 @@ public partial class Controller : MonoBehaviour
     {
         CheckList.Add(startNode);
         closedList.Add(startNode);
-        if (startNode == targetNode) return;
+        if (startNode == targetNode)
+        {
+            openList = CheckList.ToList();
+            return;
+        }
 
         var temp = CheckList.ToList();
         foreach (var path in startNode.GetComponent<Walkable>().neighborNode)
@@ -187,6 +197,6 @@ public partial class Controller : MonoBehaviour
         walkPathQueue.Clear();
         nodeCount = 0;
 
-        transform.parent = currentNode.transform;
+        transform.parent = currentNode;
     }
 }

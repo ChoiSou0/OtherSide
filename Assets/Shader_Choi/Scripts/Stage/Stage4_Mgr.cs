@@ -12,14 +12,14 @@ public class Stage4_Mgr : MonoBehaviour
     [SerializeField] private CameraShake shake;
     [SerializeField] private Controller p1;
     [SerializeField] private Controller p2;
-    [SerializeField] private Transform EndPoint1;
-    [SerializeField] private Transform EndPoint2;
+    public Transform EndPoint1;
+    public Transform EndPoint2;
     private bool Ending;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Event.CameraMove(Camera.main, new(-15.82f, 18.29f, 16.96f), 150f));
+        StartCoroutine(Event.CameraMove(Camera.main, new(-15.82f, 18.29f, 16.96f), 180f));
     }
 
     // Update is called once per frame

@@ -63,13 +63,17 @@ public class Player : Controller
         if (MovePlayerDecision != null)
         {
             yield return new WaitUntil(() => OtherPlayer.isEndBuild);
-            if (!MovePlayerDecision(OtherPlayer.nodeCount)) yield break;
+            if (!MovePlayerDecision(OtherPlayer.nodeCount))
+            {
+                StopWalking();
+                yield break;
+            }
         }
 
-        //if (playerType != PlayerMoveType.Follow)
-            //SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
+        if (playerType != PlayerMoveType.Follow)
+            SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
 
-        TouchPointEffect(targetNode);
+        if(playerType != PlayerMoveType.Follow) TouchPointEffect(targetNode);
         StartCoroutine(base.FollowPath());
         yield break;
     }
@@ -77,14 +81,14 @@ public class Player : Controller
     private void TouchPointEffect(Transform target)
     {
         var pos = target.GetComponent<Walkable>().GetWalkPoint();
-        var effectPos = new Vector3(pos.x + 0.15f, pos.y + 0.15f, pos.z + 0.15f);
+        var effectPos = new Vector3(pos.x + 0.4f, pos.y + 0.4f, pos.z + 0.4f);
 
         var effect = Instantiate(touchPoint, effectPos, Quaternion.identity);
         Destroy(effect.gameObject, 2f);
     }
     private bool ShortPathThenOther(int otherNodeCount)
     {
-        if (otherNodeCount <= nodeCount && otherNodeCount != 0)
+        if (otherNodeCount != 0 && otherNodeCount <= nodeCount )
         {
             return false;
         }
