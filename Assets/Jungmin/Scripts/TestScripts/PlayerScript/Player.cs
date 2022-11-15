@@ -65,8 +65,8 @@ public class Player : Controller
             if (!MovePlayerDecision(OtherPlayer.nodeCount)) yield break;
         }
 
-        if (playerType != PlayerMoveType.Follow)
-            SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
+        //if (playerType != PlayerMoveType.Follow)
+            //SoundManager.Instance.PlaySFX(SoundEffect.Walk, 0.1f, 1.3f, walkPathQueue.Count * 0.25f);
 
         StartCoroutine(base.FollowPath());
         yield break;

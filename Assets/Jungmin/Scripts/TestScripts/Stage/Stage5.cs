@@ -60,7 +60,7 @@ public class Stage5 : StageManager
                 StartCoroutine(Event.ObjectAppearance
                     (Tevent.EventObject.gameObject, Tevent.EventObject.activeValues[0], Tevent.moveTime));
 
-                SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, Tevent.moveTime);
+                SoundManager.Instance.PlaySFX(SoundEffect.Vibration, 0.8f, 1, Tevent.moveTime + 0.3f);
                 StartCoroutine(Event.CameraShake(Camera.main, 0.45f, Tevent.moveTime));
             }
         }

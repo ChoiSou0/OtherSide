@@ -35,11 +35,10 @@ public partial class Controller : MonoBehaviour
 
             if (Physics.Raycast(ray, out mouseHit))
             {
+                if (mouseHit.transform == targetNode) return;
+                if(isWalking) StopWalking();
+
                 targetNode = mouseHit.transform;
-
-                if(isWalking)
-                    StopWalking();
-
                 FindPathAndWalking();
             }
         }
@@ -94,8 +93,6 @@ public partial class Controller : MonoBehaviour
 
     protected virtual void BuildPath(List<Transform> pathList)
     {
-        Debug.Log(pathList[pathList.Count - 1]);
-
         foreach (Transform path in pathList)
         {
             var walkable = path.GetComponent<Walkable>();
@@ -104,8 +101,6 @@ public partial class Controller : MonoBehaviour
         }
         isEndBuild = true;
         StartCoroutine(FollowPath());
-
-
     }
 
     protected virtual IEnumerator FollowPath()
