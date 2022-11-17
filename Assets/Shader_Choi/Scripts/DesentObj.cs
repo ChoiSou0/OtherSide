@@ -40,6 +40,8 @@ public class DesentObj : MonoBehaviour
         {
             Node.neighborNode[i].isActive = true;
         }
+        SetPlayerParent();
+
         yield return new WaitForSecondsRealtime(1f);
 
         this.gameObject.transform.DOMoveY(MaxY, 3.5f);
@@ -70,5 +72,17 @@ public class DesentObj : MonoBehaviour
         }
 
         yield break;
+    }
+
+    private void SetPlayerParent()
+    {
+        if(p1.currentNode == PlayNode)
+        {
+            p1.transform.SetParent(transform);
+        }
+        else if (p2.currentNode == PlayNode)
+        {
+            p2.transform.SetParent(transform);
+        }
     }
 }

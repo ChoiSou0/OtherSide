@@ -41,11 +41,12 @@ public partial class Controller : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit mouseHit;
 
-            if (Physics.Raycast(ray, out mouseHit))
+            if (Physics.Raycast(ray, out mouseHit) 
+                && mouseHit.transform.GetComponent<Walkable>() != null)
             {
                 if (mouseHit.transform == targetNode) return;
-                if (isWalking) StopWalking();
 
+                StopWalking();
                 targetNode = mouseHit.transform;
                 if(targetNode != currentNode) FindPathAndWalking();
             }
