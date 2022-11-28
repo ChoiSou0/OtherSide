@@ -36,9 +36,10 @@ public class DesentObj : MonoBehaviour
 
     private IEnumerator Desent()
     {
-        for (int i = 0; i < Node.neighborNode.Count; i++)
+
+        for (int i = 0; i < playNeighborNode.Length; i++)
         {
-            Node.neighborNode[i].isActive = true;
+            playNeighborNode[i].neighborNode[playNeighborindex[i]].isActive = false;
         }
         SetPlayerParent();
 
@@ -47,18 +48,18 @@ public class DesentObj : MonoBehaviour
         this.gameObject.transform.DOMoveY(MaxY, 3.5f);
         yield return new WaitForSecondsRealtime(3.5f);
 
-        for (int i = 0; i < playNeighborNode.Length; i++)
+        for (int i = 0; i < Node.neighborNode.Count; i++)
         {
-            playNeighborNode[i].neighborNode[playNeighborindex[i]].isActive = false;
+            Node.neighborNode[i].isActive = true;
         }
-
-        
 
         yield break;
     }
 
     private IEnumerator Increase()
     {
+        yield return new WaitForSeconds(1f);
+
         for (int i = 0; i < Node.neighborNode.Count; i++)
         {
             Node.neighborNode[i].isActive = false;
