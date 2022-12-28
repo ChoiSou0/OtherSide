@@ -12,20 +12,44 @@ public class Stage3 : StageManager
 
     private void Start()
     {
-        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 15.22f, 18.59f), 180f));    
+        StartCoroutine(Event.CameraMove(Camera.main, new Vector3(19f, 15.22f, 18.59f), 180f));
+        StartCoroutine(ClearCondition());
     }
 
     protected override void Update()
     {
         base.Update();
         if (!isPortal && player1.currentNode != null) PortalCondition();
+    }
 
-        if (player1.currentNode == portal[0] &&
-            player2.playerType == PlayerMoveType.Follow && player2.currentNode != portal[0] && player2.isWalking == false)
-        {
-            player1.OtherPlayerFollowMe(portal[0]);
+    private IEnumerator ClearCondition()
+    {
+        while (!isClearStage)
+        {   
+            if (player1.targetNode == portal[0] &&
+                    player2.playerType == PlayerMoveType.Follow &&
+                    player2.currentNode != portal[0] && player2.isWalking == false)
+            {
+                player1.OtherPlayerFollowMe(portal[0]);
+            }
+
+            if(player1.targetNode == portal[0] && player2.targetNode != portal[0])
+            {
+                player1.StopWalking();
+            }
+            yield return new WaitForSeconds(0.1f);
         }
     }
+
+    private bool CheckP1AroundP2(Walkable walkable)
+    {
+        foreach (Node node in walkable.neighborNode)
+        {
+            if (node.nodePoint == player2.currentNode) return true;
+        }
+        return false;
+    }
+
 
     protected override void StageClear()
     {
@@ -34,7 +58,7 @@ public class Stage3 : StageManager
 
     protected override void ClearCheck()
     {
-        if(player1.currentNode == portal[0] && player2.currentNode == portal[0])
+        if (player1.currentNode == portal[0] && player2.currentNode == portal[0])
         {
             StageClear();
             isClearStage = true;
@@ -51,7 +75,7 @@ public class Stage3 : StageManager
                 StartCoroutine(PortalApeear());
                 isPortal = true;
             }
-        }      
+        }
     }
 
     private IEnumerator PortalApeear()

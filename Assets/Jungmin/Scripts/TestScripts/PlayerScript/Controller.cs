@@ -10,7 +10,7 @@ public partial class Controller : MonoBehaviour
     public Transform currentNode;
     public Transform targetNode;
 
-    [SerializeField] protected Queue<Walkable> walkPathQueue = new Queue<Walkable>();
+    [SerializeField] public Queue<Walkable> walkPathQueue = new Queue<Walkable>();
 
     protected List<Transform> openList = new List<Transform>();
     protected List<Transform> closedList = new List<Transform>();
@@ -23,9 +23,13 @@ public partial class Controller : MonoBehaviour
     public bool isWalking = false;
     private Sequence walk;
 
+    private void Start()
+    {
+        StartCoroutine(RayCheckToCurrentNode());
+    }
+
     protected virtual void Update()
     {
-        RayCheckToCurrentNode();
         AnimationCheck();
         TouchScreen();
     }
@@ -41,13 +45,14 @@ public partial class Controller : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit mouseHit;
 
-            if (Physics.Raycast(ray, out mouseHit))
+            if (Physics.Raycast(ray, out mouseHit)
+                && mouseHit.transform.GetComponent<Walkable>() != null)
             {
                 if (mouseHit.transform == targetNode) return;
-                if (isWalking) StopWalking();
 
+                if (isWalking) StopWalking();
                 targetNode = mouseHit.transform;
-                if(targetNode != currentNode) FindPathAndWalking();
+                if (targetNode != currentNode) FindPathAndWalking();
             }
         }
     }
@@ -76,7 +81,11 @@ public partial class Controller : MonoBehaviour
             ResetList();
         }
         if (pathList.Count != 0) BuildPath(pathList);
-        else isEndBuild = true;
+        else
+        {
+            targetNode = null;
+            isEndBuild = true;
+        }
     }
 
     protected void ExplorePath(Transform startNode)
@@ -143,39 +152,43 @@ public partial class Controller : MonoBehaviour
                     WalkableType.Basic => transform.DOMove(path.GetWalkPoint(), 0.25f).SetEase(Ease.Linear),
 
                     WalkableType.TelePort =>
-                    path.GetComponent<TelePort>().GetTelePortAction(transform, StopWalking),
+                    path.GetComponent<TelePort>().GetTelePortAction(transform, null, StopWalking),
 
                     WalkableType.ClearPortal =>
                     path.GetComponent<ClearPortal>().GetWalkPointAction(transform)
                 };
 
+                transform.SetParent(path.transform);
                 if (walkPathQueue.Count == 0 && path.type != WalkableType.TelePort)
                     walk.Append(tween).OnComplete(() => StopWalking());
                 else if (tween != null)
                     walk.Append(tween);
-                transform.SetParent(path.transform);
             }
             #region È¸Àü
 
             walk.Join(transform.DOLookAt(path.transform.position, .1f, AxisConstraint.Y, Vector3.up));
 
             #endregion
-
         }
         yield break;
     }
 
-    private void RayCheckToCurrentNode()
+    private IEnumerator RayCheckToCurrentNode()
     {
-        Ray ray = new Ray(transform.GetChild(0).transform.position, -transform.up);
-        RaycastHit playerHit;
-
-        if (Physics.Raycast(ray, out playerHit))
+        for (;;)
         {
-            if (playerHit.transform.GetComponent<Walkable>() != null)
+            Ray ray = new Ray(transform.GetChild(0).transform.position, -transform.up);
+            RaycastHit playerHit;
+
+            if (Physics.Raycast(ray, out playerHit))
             {
-                currentNode = playerHit.transform;
+                if (playerHit.transform.GetComponent<Walkable>() != null)
+                {
+                    currentNode = playerHit.transform;
+                    transform.SetParent(currentNode);
+                }
             }
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -188,8 +201,6 @@ public partial class Controller : MonoBehaviour
 
     public void StopWalking()
     {
-        Debug.Log(gameObject.name + "stop");
-
         isWalking = false;
         isEndBuild = false;
 

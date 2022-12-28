@@ -7,11 +7,11 @@ public class TelePort : Walkable
 {
     public GameObject interactPlayer = null;
     public PortalType portalType;
-    public System.Func<Transform, System.Action, Tween> GetTelePortAction;
+    public System.Func<Transform, Transform, System.Action, Tween> GetTelePortAction;
     public System.Action MoveEnd;
 
     [SerializeField] Walkable linkedNode;
-    [SerializeField] Walkable arrivalNode;
+    public Walkable arrivalNode;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class TelePort : Walkable
         else GetTelePortAction = GetTelePortBasic;
     }
 
-    public Tween GetTelePortInteractPlayer(Transform tr, System.Action callBack = null)
+    public Tween GetTelePortInteractPlayer(Transform tr, Transform tempNode = null, System.Action callBack = null)
     {
         if (tr.gameObject == interactPlayer)
         {
@@ -35,7 +35,7 @@ public class TelePort : Walkable
         return null;
     }
 
-    public Tween GetTelePortBasic(Transform tr, System.Action callBack = null)
+    public Tween GetTelePortBasic(Transform tr, Transform tempNode = null, System.Action callBack = null)
     {
         return tr.DOMove(GetWalkPoint(), 0.25f).SetEase(Ease.Linear)
             .OnComplete(() =>

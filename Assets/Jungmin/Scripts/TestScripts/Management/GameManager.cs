@@ -17,6 +17,10 @@ namespace Jungmin
         {
             base.Awake();
 
+            SceneManager.sceneLoaded += 
+                (Scene scene, LoadSceneMode mode) => { Application.targetFrameRate = 60; };
+            SceneManager.sceneLoaded +=
+               (Scene scene, LoadSceneMode mode) => { Screen.SetResolution(900, 1600, true); };
             SceneManager.sceneLoaded +=
                 (Scene scene, LoadSceneMode mode) => { StartCoroutine(Event.FadeOut(fadeImage)); };
 
